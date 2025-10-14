@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 1f;
+    private int maxHealth = 5;
+    private int currentHealth;
 
     private PlayerControls playerControls;
     private Vector2 movement;
@@ -20,6 +22,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        currentHealth = maxHealth;
     }
 
     private void OnEnable()
@@ -32,6 +35,7 @@ public class PlayerController : MonoBehaviour
         PlayerInput();
     }
 
+    //FixedUpdate es como el Update pero en vez de llamarlo cada frame lo hace en unos intervalos de tiempo determinados
     private void FixedUpdate()
     {
         AdjustPlayerFacingDirection();
@@ -55,7 +59,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
     private void PlayerInput()
     {
         movement = playerControls.Movement.Move.ReadValue<Vector2>();
@@ -67,5 +70,9 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         rb.MovePosition(rb.position + movement * (moveSpeed * Time.fixedDeltaTime));
+    }
+    public void LoseLife(int damage)
+    {
+        maxHealth -= damage;
     }
 }
