@@ -6,9 +6,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 1f;
-    private int maxHealth = 5;
+    [SerializeField] private int Health = 5;
     private int currentHealth;
 
+    public Lifebar lifebar; 
     private PlayerControls playerControls;
     private Vector2 movement;
     private Rigidbody2D rb;
@@ -22,7 +23,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        currentHealth = maxHealth;
+        currentHealth = Health;
     }
 
     private void OnEnable()
@@ -71,8 +72,10 @@ public class PlayerController : MonoBehaviour
     {
         rb.MovePosition(rb.position + movement * (moveSpeed * Time.fixedDeltaTime));
     }
+
     public void LoseLife(int damage)
     {
-        maxHealth -= damage;
+        Health -= damage;
+        lifebar.ChangeHealth(Health);
     }
 }

@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  lifes: 5
+  maxHealth: 5
 --- !u!95 &7594899937120031750
 Animator:
   serializedVersion: 5
