@@ -35,6 +35,7 @@
             label2 = new Label();
             label1 = new Label();
             panel2 = new Panel();
+            ckbRefrigerio = new CheckBox();
             btnCerrarSesion = new Button();
             cmbHora = new ComboBox();
             cmbSala = new ComboBox();
@@ -44,8 +45,14 @@
             label3 = new Label();
             label4 = new Label();
             btnSalir = new Button();
+            panel3 = new Panel();
+            label7 = new Label();
+            label8 = new Label();
+            cmbBocadito = new ComboBox();
+            cmbBebida = new ComboBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -108,6 +115,7 @@
             // panel2
             // 
             panel2.BackColor = SystemColors.ActiveCaption;
+            panel2.Controls.Add(ckbRefrigerio);
             panel2.Controls.Add(btnCerrarSesion);
             panel2.Controls.Add(cmbHora);
             panel2.Controls.Add(cmbSala);
@@ -121,6 +129,17 @@
             panel2.Size = new Size(691, 149);
             panel2.TabIndex = 5;
             panel2.Visible = false;
+            // 
+            // ckbRefrigerio
+            // 
+            ckbRefrigerio.AutoSize = true;
+            ckbRefrigerio.Location = new Point(77, 116);
+            ckbRefrigerio.Name = "ckbRefrigerio";
+            ckbRefrigerio.Size = new Size(77, 19);
+            ckbRefrigerio.TabIndex = 9;
+            ckbRefrigerio.Text = "Refrigerio";
+            ckbRefrigerio.UseVisualStyleBackColor = true;
+            ckbRefrigerio.CheckedChanged += ckbRefrigerio_CheckedChanged;
             // 
             // btnCerrarSesion
             // 
@@ -166,6 +185,7 @@
             btnReservar.TabIndex = 4;
             btnReservar.Text = "Reservar";
             btnReservar.UseVisualStyleBackColor = true;
+            btnReservar.Click += btnReservar_Click;
             // 
             // txtNumAsistentes
             // 
@@ -190,9 +210,9 @@
             label4.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.Location = new Point(25, 43);
             label4.Name = "label4";
-            label4.Size = new Size(171, 16);
+            label4.Size = new Size(166, 16);
             label4.TabIndex = 0;
-            label4.Text = "Numero de asistemtes";
+            label4.Text = "Numero de asistentes";
             // 
             // btnSalir
             // 
@@ -203,12 +223,62 @@
             btnSalir.Text = "SALIR";
             btnSalir.UseVisualStyleBackColor = true;
             // 
+            // panel3
+            // 
+            panel3.BackColor = SystemColors.ActiveCaption;
+            panel3.Controls.Add(label7);
+            panel3.Controls.Add(label8);
+            panel3.Controls.Add(cmbBocadito);
+            panel3.Controls.Add(cmbBebida);
+            panel3.Location = new Point(58, 342);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(598, 89);
+            panel3.TabIndex = 9;
+            panel3.Visible = false;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.Location = new Point(30, 27);
+            label7.Name = "label7";
+            label7.Size = new Size(57, 16);
+            label7.TabIndex = 10;
+            label7.Text = "Bebida";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.Location = new Point(262, 27);
+            label8.Name = "label8";
+            label8.Size = new Size(71, 16);
+            label8.TabIndex = 9;
+            label8.Text = "Bocadito";
+            // 
+            // cmbBocadito
+            // 
+            cmbBocadito.FormattingEnabled = true;
+            cmbBocadito.Location = new Point(339, 24);
+            cmbBocadito.Name = "cmbBocadito";
+            cmbBocadito.Size = new Size(121, 23);
+            cmbBocadito.TabIndex = 3;
+            // 
+            // cmbBebida
+            // 
+            cmbBebida.FormattingEnabled = true;
+            cmbBebida.Location = new Point(93, 24);
+            cmbBebida.Name = "cmbBebida";
+            cmbBebida.Size = new Size(121, 23);
+            cmbBebida.TabIndex = 2;
+            // 
             // Inicio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveBorder;
             ClientSize = new Size(800, 450);
+            Controls.Add(panel3);
             Controls.Add(btnSalir);
             Controls.Add(panel2);
             Controls.Add(panel1);
@@ -218,6 +288,8 @@
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -239,5 +311,11 @@
         private Label label5;
         private Button btnCerrarSesion;
         private Button btnSalir;
+        private Panel panel3;
+        private Label label8;
+        private ComboBox cmbBocadito;
+        private ComboBox cmbBebida;
+        private CheckBox ckbRefrigerio;
+        private Label label7;
     }
 }
