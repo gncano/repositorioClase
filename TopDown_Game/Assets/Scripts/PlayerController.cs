@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -9,7 +6,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int Health = 5;
     private int currentHealth;
 
-    public Lifebar lifebar; 
+    public Lifebar lifebar;
     private PlayerControls playerControls;
     private Vector2 movement;
     private Rigidbody2D rb;
@@ -24,6 +21,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         currentHealth = Health;
+
     }
 
     private void OnEnable()
@@ -50,13 +48,13 @@ public class PlayerController : MonoBehaviour
         Vector3 mousePos = Input.mousePosition;
         Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
 
-        if(mousePos.x < playerScreenPoint.x)
+        if (mousePos.x < playerScreenPoint.x)
         {
             spriteRenderer.flipX = true;
         }
         else
         {
-            spriteRenderer.flipX= false;
+            spriteRenderer.flipX = false;
         }
     }
 
