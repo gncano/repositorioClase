@@ -41,7 +41,7 @@ namespace SalasEmpresa
                 MessageBox.Show("Usuario o contraseña incorrectos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             CargarSalas();
-            CargarHoras();
+
         }
 
         private void CargarSalas()
@@ -56,7 +56,7 @@ namespace SalasEmpresa
         {
             string salaSeleccionada = cmbSala.SelectedItem.ToString();
 
-            cmbHora.Items.Clear(); 
+            cmbHora.Items.Clear();
 
             if (horasPorSala.ContainsKey(salaSeleccionada))
             {
@@ -64,6 +64,11 @@ namespace SalasEmpresa
                 if (cmbHora.Items.Count > 0)
                     cmbHora.SelectedIndex = 0; // Selecciona la primera hora disponible
             }
+        }
+
+        private void cmbSala_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarHoras();
         }
     }
 }

@@ -35,6 +35,7 @@
             label2 = new Label();
             label1 = new Label();
             panel2 = new Panel();
+            btnCerrarSesion = new Button();
             cmbHora = new ComboBox();
             cmbSala = new ComboBox();
             label5 = new Label();
@@ -43,7 +44,6 @@
             label3 = new Label();
             label4 = new Label();
             btnSalir = new Button();
-            btnCerrarSesion = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -122,6 +122,15 @@
             panel2.TabIndex = 5;
             panel2.Visible = false;
             // 
+            // btnCerrarSesion
+            // 
+            btnCerrarSesion.Location = new Point(486, 79);
+            btnCerrarSesion.Name = "btnCerrarSesion";
+            btnCerrarSesion.Size = new Size(125, 36);
+            btnCerrarSesion.TabIndex = 8;
+            btnCerrarSesion.Text = "Cerrar sesion";
+            btnCerrarSesion.UseVisualStyleBackColor = true;
+            // 
             // cmbHora
             // 
             cmbHora.FormattingEnabled = true;
@@ -137,6 +146,7 @@
             cmbSala.Name = "cmbSala";
             cmbSala.Size = new Size(121, 23);
             cmbSala.TabIndex = 6;
+            cmbSala.SelectedIndexChanged += cmbSala_SelectedIndexChanged;
             // 
             // label5
             // 
@@ -192,15 +202,6 @@
             btnSalir.TabIndex = 6;
             btnSalir.Text = "SALIR";
             btnSalir.UseVisualStyleBackColor = true;
-            // 
-            // btnCerrarSesion
-            // 
-            btnCerrarSesion.Location = new Point(486, 79);
-            btnCerrarSesion.Name = "btnCerrarSesion";
-            btnCerrarSesion.Size = new Size(125, 36);
-            btnCerrarSesion.TabIndex = 8;
-            btnCerrarSesion.Text = "Cerrar sesion";
-            btnCerrarSesion.UseVisualStyleBackColor = true;
             // 
             // Inicio
             // 
