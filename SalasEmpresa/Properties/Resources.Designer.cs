@@ -61,12 +61,12 @@ namespace SalasEmpresa.Properties {
         }
         
         /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
+        ///   Busca una cadena traducida similar a usuario1;password1;usuario2;password2;usuario3;password3;usuario4;password4;usuario5;password5;usuario6;password6;usuario7;password7;usuario8;password8;usuario9;password9;usuario10;password10
+        ///.
         /// </summary>
-        internal static byte[] credenciales {
+        internal static string credenciales {
             get {
-                object obj = ResourceManager.GetObject("credenciales", resourceCulture);
-                return ((byte[])(obj));
+                return ResourceManager.GetString("credenciales", resourceCulture);
             }
         }
     }
