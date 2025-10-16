@@ -69,5 +69,15 @@ namespace SalasEmpresa.Properties {
                 return ResourceManager.GetString("credenciales", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Byte[].
+        /// </summary>
+        internal static byte[] estus {
+            get {
+                object obj = ResourceManager.GetObject("estus", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
