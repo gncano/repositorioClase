@@ -100,3 +100,9 @@ InitTestScene*.unity*
 /game/Library
 /game/Temp
 /TopDown_Game/Library
+
+# Añado esto para los proyectos de visual Studio 2022
+
+!*.sln
+!*.csproj
+!*.vbproj
