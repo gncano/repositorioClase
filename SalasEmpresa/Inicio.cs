@@ -74,7 +74,7 @@ namespace SalasEmpresa
 
         private void CargarHoras()
         {
-            string salaSeleccionada = cmbSala.SelectedItem.ToString();
+            string salaSeleccionada = cmbSala.SelectedItem.ToString(); //error preguntar a Rosa
 
             cmbHora.Items.Clear();
 
@@ -82,7 +82,7 @@ namespace SalasEmpresa
             {
                 cmbHora.Items.AddRange(horasPorSala[salaSeleccionada]);
                 if (cmbHora.Items.Count > 0)
-                    cmbHora.SelectedIndex = 0; // Selecciona la primera hora disponible
+                    cmbHora.SelectedIndex = 0; 
             }
         }
 
@@ -121,19 +121,26 @@ namespace SalasEmpresa
             string sala = cmbSala.SelectedItem?.ToString();
             int horaIndice = cmbHora.SelectedIndex;
 
+            int numeroAsistentes = 0;
+
+
             if (sala == null || horaIndice < 0)
             {
                 MessageBox.Show("Selecciona una sala y una hora.");
                 return;
             }
 
-            if (!int.TryParse(txtNumAsistentes.Text.Trim(), out int numeroAsistentes))
+            if (!ValidarAsistentes())
             {
-                MessageBox.Show("Número de asistentes no válido.");
                 return;
+
+            }
+            else
+            {
+                numeroAsistentes = int.Parse(txtNumAsistentes.Text.Trim());
             }
 
-            int capacidadMax = 0;
+                int capacidadMax = 0;
             switch (sala)
             {
                 case "Sala 1": capacidadMax = 8; break;
@@ -261,10 +268,12 @@ namespace SalasEmpresa
             txtIdentificacion.Clear();
             txtContraseña.Clear();
             txtNumAsistentes.Clear();
+            cmbSala.Items.Clear();
             cmbSala.SelectedIndex = -1;
             cmbHora.Items.Clear();
             cmbBebida.SelectedIndex = -1;
             cmbBocadito.SelectedIndex = -1;
+            
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
             panel1 = new Panel();
             btnAceptar = new Button();
             txtContraseña = new TextBox();
@@ -284,6 +285,7 @@
             Controls.Add(btnSalir);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Inicio";
             Text = "Form1";
             panel1.ResumeLayout(false);
