@@ -27,6 +27,12 @@ namespace SalasEmpresa
             { "Vegetal", 2.0 }
 };
 
+        Dictionary<string, string[]> reservas = new Dictionary<string, string[]>()
+{
+            { "Sala 1", new string[9] },
+            { "Sala 2", new string[9] },
+            { "Comedor", new string[9] }};
+
         public Inicio()
         {
             InitializeComponent();
@@ -35,8 +41,6 @@ namespace SalasEmpresa
             listaCredenciales = credenciales.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries).ToArray();
 
         }
-
-
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
@@ -113,8 +117,59 @@ namespace SalasEmpresa
 
         private void btnReservar_Click(object sender, EventArgs e)
         {
-            ValidarAsistentes();
-            ValidarRefrigerio();
+            string usuario = txtIdentificacion.Text;
+            string sala = cmbSala.SelectedItem?.ToString();
+            int horaIndice = cmbHora.SelectedIndex;
+
+            if (sala == null || horaIndice < 0)
+            {
+                MessageBox.Show("Selecciona una sala y una hora.");
+                return;
+            }
+
+            if (!int.TryParse(txtNumAsistentes.Text.Trim(), out int numeroAsistentes))
+            {
+                MessageBox.Show("Número de asistentes no válido.");
+                return;
+            }
+
+            int capacidadMax = 0;
+            switch (sala)
+            {
+                case "Sala 1": capacidadMax = 8; break;
+                case "Sala 2": capacidadMax = 10; break;
+                case "Comedor": capacidadMax = 20; break;
+            }
+
+            if (numeroAsistentes > capacidadMax)
+            {
+                MessageBox.Show("El número de asistentes excede la capacidad máxima de {capacidadMax}.");
+                return;
+            }
+
+            if (!ValidarRefrigerio())
+                return;
+
+            if (!HoraDisponible(sala, horaIndice))
+            {
+                MessageBox.Show("La hora seleccionada ya está reservada.");
+                return;
+            }
+
+            ReservarHora(usuario, sala, horaIndice);
+
+            ActualizarHoras();
+
+            string mensaje = $"Reserva realizada:\nSala: {sala}\nHora: {cmbHora.SelectedItem}\nAsistentes: {numeroAsistentes}";
+
+            if (!string.IsNullOrEmpty(cmbBebida.Text) || !string.IsNullOrEmpty(cmbBocadito.Text))
+                mensaje += $"\nRefrigerio: {cmbBebida.Text} y {cmbBocadito.Text}";
+
+            MessageBox.Show(mensaje, "Reserva Confirmada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            txtNumAsistentes.Clear();
+            cmbBebida.SelectedIndex = -1;
+            cmbBocadito.SelectedIndex = -1;
 
         }
 
@@ -167,6 +222,54 @@ namespace SalasEmpresa
             }
 
             return true;
+        }
+
+        private bool HoraDisponible(string sala, int horaPos)
+        {
+            return reservas[sala][horaPos] == null;
+        }
+
+        private void ReservarHora(string usuario, string sala, int horaPos)
+        {
+            reservas[sala][horaPos] = usuario;
+        }
+        private void ActualizarHoras()
+        {
+            cmbHora.Items.Clear();
+            string[] horas = { "8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00" };
+            string salaSeleccionada = cmbSala.SelectedItem?.ToString(); // uso ? para evitar errores si es null
+
+            for (int i = 0; i < horas.Length; i++)
+            {
+                if (salaSeleccionada == "Comedor" && i >= 5 && i <= 7)
+                {
+                    continue;
+                }
+
+                cmbHora.Items.Add(horas[i]);
+            }
+
+            if (cmbHora.Items.Count > 0)
+                cmbHora.SelectedIndex = 0;
+        }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            panel2.Visible = false;
+            panel1.Visible = true;
+
+            txtIdentificacion.Clear();
+            txtContraseña.Clear();
+            txtNumAsistentes.Clear();
+            cmbSala.SelectedIndex = -1;
+            cmbHora.Items.Clear();
+            cmbBebida.SelectedIndex = -1;
+            cmbBocadito.SelectedIndex = -1;
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

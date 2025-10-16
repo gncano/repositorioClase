@@ -149,6 +149,7 @@
             btnCerrarSesion.TabIndex = 8;
             btnCerrarSesion.Text = "Cerrar sesion";
             btnCerrarSesion.UseVisualStyleBackColor = true;
+            btnCerrarSesion.Click += btnCerrarSesion_Click;
             // 
             // cmbHora
             // 
@@ -222,6 +223,7 @@
             btnSalir.TabIndex = 6;
             btnSalir.Text = "SALIR";
             btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Click += btnSalir_Click;
             // 
             // panel3
             // 
