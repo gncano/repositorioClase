@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int Health = 5;
     [SerializeField] private float cdShoot = 1f;
     private int currentHealth;
-    [SerializeField] private GameObject redFireballPrefab;
+    public GameObject redFireballPrefab;
 
     public Lifebar lifebar;
     private PlayerControls playerControls;
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         PlayerInput();
-        if (Input.GetKey(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             Shoot();
         }
@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
+        
     }
 
     private void PlayerInput()
@@ -88,12 +89,14 @@ public class PlayerController : MonoBehaviour
     {
         if (Time.time > cdShoot)
         {
+         GameObject projectile = Instantiate(redFireballPrefab, transform.position + new Vector3(0, 0,0), Quaternion.identity);
+         Destroy(projectile, 1f);
 
-
-            Instantiate(redFireballPrefab, transform.position + new Vector3(0, 0, 0), Quaternion.identity);
-            
-
-
+         Vector3 mousePos = Input.mousePosition;
+         Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
+         Vector3 direction= (mousePos-playerScreenPoint).normalized;
+         projectile.GetComponent<RedFireball>().setDirection(direction);
+         
         }
 
     }

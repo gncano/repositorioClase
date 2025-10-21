@@ -5,6 +5,7 @@ using UnityEngine;
 public class RedFireball : MonoBehaviour
 {
     [SerializeField] float speed = 10f;
+    private Vector3 direction;
 
     private void Start()
     {
@@ -13,16 +14,13 @@ public class RedFireball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(DeleteFireball());
+      
+        transform.Translate(direction * speed * Time.deltaTime);
     }
 
-    public void StartDeleteFireball()
+    public void setDirection(Vector3 dir)
     {
-        StartCoroutine(DeleteFireball());
+        direction = dir;
     }
-    public IEnumerator DeleteFireball()
-    {
-        yield return new WaitForSeconds(5f);
-        Destroy(gameObject);
-    }
+ 
 }
