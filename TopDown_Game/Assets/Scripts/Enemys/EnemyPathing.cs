@@ -21,6 +21,6 @@ public class EnemyPathing : MonoBehaviour
 
     public void MoveTo(Vector2 targetPosition)
     {
-        moveDir = targetPosition;
+        moveDir = (targetPosition- rb.position).normalized;
     }
 }

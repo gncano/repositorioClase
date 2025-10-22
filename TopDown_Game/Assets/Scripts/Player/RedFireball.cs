@@ -22,5 +22,10 @@ public class RedFireball : MonoBehaviour
     {
         direction = dir;
     }
+
+    public void destroyFireball()
+    {
+        Destroy(gameObject);
+    }
  
 }

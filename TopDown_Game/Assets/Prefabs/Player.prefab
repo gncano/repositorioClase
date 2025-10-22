@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 88567312600074270}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,9 +75,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1595027359
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1402956551, guid: b9fa354dadea85f4b9907b4c11a618bd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
   moveSpeed: 5
   Health: 5
   cdShoot: 1
-  redFireballPrefab: {fileID: 0}
+  redFireballPrefab: {fileID: 3497760152889133476, guid: ae09e3f5846848c4b880e6adc62acbe6, type: 3}
   lifebar: {fileID: 0}
 --- !u!95 &4646176717807517558
 Animator:
@@ -186,8 +186,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.025755703, y: 0.36500835}
-  m_Size: {x: 0.6162344, y: 1.3226566}
+  m_Offset: {x: 0.025755703, y: 0.29977334}
+  m_Size: {x: 0.6162344, y: 1.1921866}
   m_Direction: 0
 --- !u!61 &88567312600074270
 BoxCollider2D:
