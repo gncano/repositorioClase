@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -83,6 +84,17 @@ public class PlayerController : MonoBehaviour
     {
         Health -= damage;
         lifebar.ChangeHealth(Health);
+        if (Health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
+       
+
     }
 
     public void Shoot()
