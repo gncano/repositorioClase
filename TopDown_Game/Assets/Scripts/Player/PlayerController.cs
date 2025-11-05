@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     //Uso Awake para que se ejecute antes que el OnEnable
     private void Awake()
     {
-        playerControls = new PlayerControls();
+        
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -27,17 +27,24 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void OnEnable()
+   private void Start()
     {
+        playerControls = new PlayerControls();
         playerControls.Enable();
     }
 
+ 
+
     private void Update()
     {
-        PlayerInput();
+        
         if (Input.GetMouseButtonDown(0))
         {
             Shoot();
+        }
+        if (playerControls != null)
+        {
+            PlayerInput();
         }
     }
 
