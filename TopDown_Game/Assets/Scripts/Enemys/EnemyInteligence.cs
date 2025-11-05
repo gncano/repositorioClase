@@ -39,15 +39,9 @@ public class EnemyIntelligence : MonoBehaviour
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
             player.LoseLife(1);
         }
-
-        
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
         if (collision.gameObject.tag == "Fireball")
         {
-            RedFireball fireball=collision.gameObject.GetComponent<RedFireball>();
+            RedFireball fireball = collision.gameObject.GetComponent<RedFireball>();
             LoseLife(1);
             if (state == State.Roaming)
             {
@@ -55,18 +49,40 @@ public class EnemyIntelligence : MonoBehaviour
                 StopCoroutine(RoamingRoutine());
             }
             StartCoroutine(AttackingRoutine());
-            
+
             fireball.destroyFireball();
 
+        }
+
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            if (state == State.Roaming)
+            {
+                state = State.Attacking;
+                StopCoroutine(RoamingRoutine());
+            }
+            StartCoroutine(AttackingRoutine());
         }
     }
 
     private void LoseLife(int damage)
     {
+        
         health -= damage;
         if (health <= 0)
         {
             Destroy(gameObject);
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                PlayerController playerController = player.GetComponent<PlayerController>();
+                playerController.AddXP(10);
+            }
         }
     }
 

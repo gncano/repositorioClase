@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -9,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float cdShoot = 1f;
     private int currentHealth;
     public GameObject redFireballPrefab;
+    public float XP = 0f;
 
     public Lifebar lifebar;
     private PlayerControls playerControls;
@@ -64,7 +63,7 @@ public class PlayerController : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
-        
+
     }
 
     private void PlayerInput()
@@ -93,25 +92,26 @@ public class PlayerController : MonoBehaviour
     private void Die()
     {
         Destroy(gameObject);
-       
-
     }
 
     public void Shoot()
     {
         if (Time.time > cdShoot)
         {
-         GameObject projectile = Instantiate(redFireballPrefab, transform.position + new Vector3(0, 0,0), Quaternion.identity);
-         Destroy(projectile, 1f);
+            GameObject projectile = Instantiate(redFireballPrefab, transform.position + new Vector3(0, 0, 0), Quaternion.identity);
+            Destroy(projectile, 1f);
 
-         Vector3 mousePos = Input.mousePosition;
-         Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
-         Vector3 direction= (mousePos-playerScreenPoint).normalized;
-         projectile.GetComponent<RedFireball>().setDirection(direction);
-         
+            Vector3 mousePos = Input.mousePosition;
+            Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
+            Vector3 direction = (mousePos - playerScreenPoint).normalized;
+            projectile.GetComponent<RedFireball>().setDirection(direction);
+
         }
 
     }
 
-
+    public void AddXP(float enemyXP)
+    {
+        XP += enemyXP;
+    }
 }
