@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class EnemyIntelligence : MonoBehaviour
+public class SlimeIntelligence : MonoBehaviour
 {
 
     [SerializeField] private float health = 3;
