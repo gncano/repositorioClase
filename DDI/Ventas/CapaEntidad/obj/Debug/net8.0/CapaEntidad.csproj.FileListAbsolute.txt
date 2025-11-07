@@ -1,0 +1,11 @@
+C:\Users\dam\Documents\Gonzalo Cano\DDI\CapaEntidad\bin\Debug\net8.0\CapaEntidad.deps.json
+C:\Users\dam\Documents\Gonzalo Cano\DDI\CapaEntidad\bin\Debug\net8.0\CapaEntidad.dll
+C:\Users\dam\Documents\Gonzalo Cano\DDI\CapaEntidad\bin\Debug\net8.0\CapaEntidad.pdb
+C:\Users\dam\Documents\Gonzalo Cano\DDI\CapaEntidad\obj\Debug\net8.0\CapaEntidad.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dam\Documents\Gonzalo Cano\DDI\CapaEntidad\obj\Debug\net8.0\CapaEntidad.AssemblyInfoInputs.cache
+C:\Users\dam\Documents\Gonzalo Cano\DDI\CapaEntidad\obj\Debug\net8.0\CapaEntidad.AssemblyInfo.cs
+C:\Users\dam\Documents\Gonzalo Cano\DDI\CapaEntidad\obj\Debug\net8.0\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Users\dam\Documents\Gonzalo Cano\DDI\CapaEntidad\obj\Debug\net8.0\CapaEntidad.dll
+C:\Users\dam\Documents\Gonzalo Cano\DDI\CapaEntidad\obj\Debug\net8.0\refint\CapaEntidad.dll
+C:\Users\dam\Documents\Gonzalo Cano\DDI\CapaEntidad\obj\Debug\net8.0\CapaEntidad.pdb
+C:\Users\dam\Documents\Gonzalo Cano\DDI\CapaEntidad\obj\Debug\net8.0\ref\CapaEntidad.dll

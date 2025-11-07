@@ -1,0 +1,16 @@
+C:\Users\dam\Documents\Gonzalo Cano\DDI\Ventas\bin\Debug\net8.0-windows\Ventas.exe
+C:\Users\dam\Documents\Gonzalo Cano\DDI\Ventas\bin\Debug\net8.0-windows\Ventas.deps.json
+C:\Users\dam\Documents\Gonzalo Cano\DDI\Ventas\bin\Debug\net8.0-windows\Ventas.runtimeconfig.json
+C:\Users\dam\Documents\Gonzalo Cano\DDI\Ventas\bin\Debug\net8.0-windows\Ventas.dll
+C:\Users\dam\Documents\Gonzalo Cano\DDI\Ventas\bin\Debug\net8.0-windows\Ventas.pdb
+C:\Users\dam\Documents\Gonzalo Cano\DDI\Ventas\obj\Debug\net8.0-windows\Ventas.Form1.resources
+C:\Users\dam\Documents\Gonzalo Cano\DDI\Ventas\obj\Debug\net8.0-windows\Ventas.csproj.GenerateResource.cache
+C:\Users\dam\Documents\Gonzalo Cano\DDI\Ventas\obj\Debug\net8.0-windows\Ventas.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dam\Documents\Gonzalo Cano\DDI\Ventas\obj\Debug\net8.0-windows\Ventas.AssemblyInfoInputs.cache
+C:\Users\dam\Documents\Gonzalo Cano\DDI\Ventas\obj\Debug\net8.0-windows\Ventas.AssemblyInfo.cs
+C:\Users\dam\Documents\Gonzalo Cano\DDI\Ventas\obj\Debug\net8.0-windows\Ventas.csproj.CoreCompileInputs.cache
+C:\Users\dam\Documents\Gonzalo Cano\DDI\Ventas\obj\Debug\net8.0-windows\Ventas.dll
+C:\Users\dam\Documents\Gonzalo Cano\DDI\Ventas\obj\Debug\net8.0-windows\refint\Ventas.dll
+C:\Users\dam\Documents\Gonzalo Cano\DDI\Ventas\obj\Debug\net8.0-windows\Ventas.pdb
+C:\Users\dam\Documents\Gonzalo Cano\DDI\Ventas\obj\Debug\net8.0-windows\Ventas.genruntimeconfig.cache
+C:\Users\dam\Documents\Gonzalo Cano\DDI\Ventas\obj\Debug\net8.0-windows\ref\Ventas.dll
