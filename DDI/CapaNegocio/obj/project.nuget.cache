@@ -1,12 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "yaqhg/LbS30=",
+  "dgSpecHash": "HeCnKQ7XvY8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\dam\\Documents\\Gonzalo Cano\\repositorioClase\\DDI\\Ventas\\CapaPresentacion.csproj",
+  "projectFilePath": "C:\\Users\\dam\\Documents\\Gonzalo Cano\\repositorioClase\\DDI\\CapaNegocio\\CapaNegocio.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dam\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\dam\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",
-    "C:\\Users\\dam\\.nuget\\packages\\fontawesome.sharp\\6.6.0\\fontawesome.sharp.6.6.0.nupkg.sha512",
     "C:\\Users\\dam\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\8.0.0\\microsoft.bcl.asyncinterfaces.8.0.0.nupkg.sha512",
     "C:\\Users\\dam\\.nuget\\packages\\microsoft.bcl.cryptography\\8.0.0\\microsoft.bcl.cryptography.8.0.0.nupkg.sha512",
     "C:\\Users\\dam\\.nuget\\packages\\microsoft.data.sqlclient\\6.1.2\\microsoft.data.sqlclient.6.1.2.nupkg.sha512",
