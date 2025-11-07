@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WarriorInteligence : MonoBehaviour
@@ -13,8 +12,8 @@ public class WarriorInteligence : MonoBehaviour
     //Estados del enemigo
     private enum State
     {
-        Idle, // caminando
-        Attacking // atacando
+        Idle,
+        Attacking
     }
 
     private State state;
@@ -34,27 +33,6 @@ public class WarriorInteligence : MonoBehaviour
         StartCoroutine(IdleRoutine());
     }
 
-    private void FixedUpdate()
-    {
-        
-    }
-
-    /**
-    private void AdjustWarriorFacingDirection()
-    {
-        Vector3 mousePos = Input.mousePosition;
-        Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
-
-        if (mousePos.x < playerScreenPoint.x)
-        {
-            spriteRenderer.flipX = true;
-        }
-        else
-        {
-            spriteRenderer.flipX = false;
-        }
-
-    }*/
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -63,7 +41,12 @@ public class WarriorInteligence : MonoBehaviour
         {
 
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-            player.LoseLife(1);
+
+
+            myAnimator.SetTrigger("Attack");
+            StartCoroutine(WaitAttackCoroutine(.5f, player));
+            
+
         }
         if (collision.gameObject.tag == "Fireball")
         {
@@ -80,7 +63,25 @@ public class WarriorInteligence : MonoBehaviour
 
         }
 
+    }
 
+    IEnumerator WaitAttackCoroutine(float tiempoDeEspera, PlayerController player)
+    {
+        yield return new WaitForSeconds(tiempoDeEspera);
+        player.LoseLife(3);
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+
+            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+
+
+            StartCoroutine(AttackingRoutine());
+
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -93,6 +94,7 @@ public class WarriorInteligence : MonoBehaviour
                 StopCoroutine(IdleRoutine());
             }
             StartCoroutine(AttackingRoutine());
+
         }
     }
 
@@ -130,14 +132,31 @@ public class WarriorInteligence : MonoBehaviour
     {
         while (state == State.Attacking)
         {
-            Vector2 playerPosition = GetPlayerPosition();
+            Vector3 playerPosition = GetPlayerPosition();
             enemyPathing.MoveTo(playerPosition);
 
             myAnimator.SetFloat("moveX", playerPosition.x);
             myAnimator.SetFloat("moveY", playerPosition.y);
 
+            AdjustWarriorFacingDirection();
+
             yield return new WaitForSeconds(.2f);
         }
+    }
+    private void AdjustWarriorFacingDirection()
+    {
+        Vector3 playerPos = GetPlayerPosition();
+        Vector3 warriorScreenPoint = GameObject.FindGameObjectWithTag("Warrior").transform.position;
+
+        if (playerPos.x < warriorScreenPoint.x)
+        {
+            mySpriteRenderer.flipX = true;
+        }
+        else
+        {
+            mySpriteRenderer.flipX = false;
+        }
+
     }
 
     private Vector2 GetPlayerPosition()

@@ -4,8 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemy
   - Fireball
+  - Slime
+  - Warrior
+  - Environment
   layers:
   - Default
   - TransparentFX
