@@ -5,9 +5,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private int Health = 5;
     [SerializeField] private float cdShoot = 1f;
-    private int currentHealth;
+    private int currentHealth= 5;
     public GameObject redFireballPrefab;
-    public float XP = 0f;
+    public int upgradePoints = 1;
 
     public Lifebar lifebar;
     private PlayerControls playerControls;
@@ -88,9 +88,9 @@ public class PlayerController : MonoBehaviour
 
     public void LoseLife(int damage)
     {
-        Health -= damage;
-        lifebar.ChangeHealth(Health);
-        if (Health <= 0)
+        currentHealth -= damage;
+        lifebar.ChangeHealth(currentHealth);
+        if (currentHealth <= 0)
         {
             Die();
         }
@@ -117,8 +117,24 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void AddXP(float enemyXP)
+    public void IncreaseUpgradePoints(int points)
     {
-        XP += enemyXP;
+        upgradePoints += points;
     }
+
+    public void HealFull()
+    {
+        currentHealth = Health;
+        lifebar.ChangeHealth(currentHealth);
+    }
+
+    public void IncreaseMaxHealth(int amount)
+    {
+        Health += amount;
+        currentHealth = Health;
+        lifebar.ChangeHealth(currentHealth);
+    }
+
+
+
 }

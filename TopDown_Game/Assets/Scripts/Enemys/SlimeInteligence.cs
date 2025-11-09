@@ -5,6 +5,7 @@ public class SlimeIntelligence : MonoBehaviour
 {
 
     [SerializeField] private float health = 3;
+    private float playerDamage = 1f;
 
     //Estados del enemigo
     private enum State
@@ -42,7 +43,7 @@ public class SlimeIntelligence : MonoBehaviour
         if (collision.gameObject.tag == "Fireball")
         {
             RedFireball fireball = collision.gameObject.GetComponent<RedFireball>();
-            LoseLife(1);
+            LoseLife(playerDamage);
             if (state == State.Roaming)
             {
                 state = State.Attacking;
@@ -69,7 +70,7 @@ public class SlimeIntelligence : MonoBehaviour
         }
     }
 
-    private void LoseLife(int damage)
+    private void LoseLife(float damage)
     {
         
         health -= damage;
@@ -80,7 +81,7 @@ public class SlimeIntelligence : MonoBehaviour
             if (player != null)
             {
                 PlayerController playerController = player.GetComponent<PlayerController>();
-                playerController.AddXP(10);
+                playerController.IncreaseUpgradePoints(10);
             }
         }
     }
@@ -114,4 +115,6 @@ public class SlimeIntelligence : MonoBehaviour
     {
         return GameObject.FindGameObjectWithTag("Player").transform.position;
     }
+
+    
 }
