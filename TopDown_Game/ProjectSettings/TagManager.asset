@@ -8,6 +8,7 @@ TagManager:
   - Slime
   - Warrior
   - Environment
+  - BlueFireball
   layers:
   - Default
   - TransparentFX

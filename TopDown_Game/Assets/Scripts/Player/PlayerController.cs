@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -99,6 +101,8 @@ public class PlayerController : MonoBehaviour
     private void Die()
     {
         Destroy(gameObject);
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
     }
 
     public void Shoot()
@@ -135,6 +139,17 @@ public class PlayerController : MonoBehaviour
         lifebar.ChangeHealth(currentHealth);
     }
 
+    public void ApplySlowEffect()
+    {
+        StartCoroutine(SlowCoroutine());
+    }
 
+    private IEnumerator SlowCoroutine()
+    {
+        float originalSpeed = moveSpeed;
+        moveSpeed = originalSpeed * 0.5f;
+        yield return new WaitForSeconds(5f);
+        moveSpeed = originalSpeed;
+    }
 
 }

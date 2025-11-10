@@ -66,9 +66,9 @@ public class WarriorInteligence : MonoBehaviour
 
     }
 
-    IEnumerator WaitAttackCoroutine(float tiempoDeEspera, PlayerController player)
+    IEnumerator WaitAttackCoroutine(float time, PlayerController player)
     {
-        yield return new WaitForSeconds(tiempoDeEspera);
+        yield return new WaitForSeconds(time);
         player.LoseLife(3);
     }
 
@@ -144,10 +144,11 @@ public class WarriorInteligence : MonoBehaviour
             yield return new WaitForSeconds(.2f);
         }
     }
+    
     private void AdjustWarriorFacingDirection()
     {
         Vector3 playerPos = GetPlayerPosition();
-        Vector3 warriorScreenPoint = GameObject.FindGameObjectWithTag("Warrior").transform.position;
+        Vector3 warriorScreenPoint = transform.position;
 
         if (playerPos.x < warriorScreenPoint.x)
         {
