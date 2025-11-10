@@ -33,7 +33,7 @@ namespace CapaPresentacion
 
             foreach (DataGridViewColumn columna in dgvData.Columns)
             {
-                if (columna.Visible == true && !(columna is DataGridViewColumn))
+                if (columna.Visible == true && !(columna is DataGridViewButtonColumn))
                 {
                     cmbBusqueda.Items.Add(new OpcionCombo() { valor = columna.Index, Texto = columna.HeaderText });
                 }
