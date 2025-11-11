@@ -5,7 +5,7 @@ using UnityEngine;
 public class WizzardIntelligence : MonoBehaviour
 {
 
-    private int health = 20;
+    private int health = 15;
 
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 10f;
@@ -87,7 +87,8 @@ public class WizzardIntelligence : MonoBehaviour
 
                 if (chance <= 0.7f)
                 {
-                    ShootBlueFireball();
+                    animator.SetTrigger("Attack2");
+                    Invoke("ShootBlueFireball", .8f);
                 }
                 else
                 {
@@ -101,7 +102,7 @@ public class WizzardIntelligence : MonoBehaviour
 
     private void ShootBlueFireball()
     {
-        animator.SetTrigger("Attack2");
+        
         Vector3 spawnPosition = transform.position + transform.up * 0.5f;
         GameObject projectile = Instantiate(blueFireballPrefab, spawnPosition, Quaternion.identity);
 
@@ -110,6 +111,8 @@ public class WizzardIntelligence : MonoBehaviour
         Destroy(projectile, 1f);
         
     }
+
+
 
     private void OnDrawGizmosSelected()
     {
@@ -124,7 +127,7 @@ public class WizzardIntelligence : MonoBehaviour
         Vector3 teleportPosition = player.position + directionBehindPlayer * teleportDistance;
         transform.position = teleportPosition;
 
-        StartCoroutine(WaitAndAttackCoroutine(.3f));
+        StartCoroutine(WaitAndAttackCoroutine(.1f));
         
 
     }
@@ -185,12 +188,13 @@ public class WizzardIntelligence : MonoBehaviour
 
         if (collision.gameObject.tag == "Fireball")
         {
-
+            RedFireball fireball = collision.gameObject.GetComponent<RedFireball>();
             health -= 1;
             if (health <= 0)
             {
                 Destroy(gameObject);
             }
+            fireball.destroyFireball();
 
         }
 

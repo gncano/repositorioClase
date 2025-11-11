@@ -40,7 +40,7 @@ public class RedFireball : MonoBehaviour
 
     private IEnumerator EnableCollisionAfterDelay()
     {
-        yield return new WaitForSeconds(.1f);
+        yield return new WaitForSeconds(.07f);
         col.isTrigger = false;
     }
 

@@ -496,7 +496,7 @@ GameObject:
   - component: {fileID: 651419665}
   - component: {fileID: 651419667}
   - component: {fileID: 651419666}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Grass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5636,7 +5636,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.071492895, y: -0.04298053}
+  m_Offset: {x: 0.071492895, y: -0.055952296}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -5647,7 +5647,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.14841801, y: 0.53150576}
+  m_Size: {x: 0.14841801, y: 0.8255302}
   m_EdgeRadius: 0
 --- !u!1 &1145011070
 GameObject:
@@ -5963,7 +5963,7 @@ GameObject:
   - component: {fileID: 1716861469}
   - component: {fileID: 1716861468}
   - component: {fileID: 1716861470}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plains
   m_TagString: Untagged
   m_Icon: {fileID: 0}

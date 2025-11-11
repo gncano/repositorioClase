@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Forest.unity
     guid: 30d5ced1e02ddd248abd4e241abc63ac
+  - enabled: 1
+    path: Assets/Scenes/Town.unity
+    guid: 395703424bb375e43a0e15eeab830473
+  - enabled: 1
+    path: Assets/Scenes/FinalBoss.unity
+    guid: b45465439e6dad547b1676bdf5e48355
   m_configObjects: {}
