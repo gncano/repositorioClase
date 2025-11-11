@@ -16,7 +16,7 @@ public class Lifebar : MonoBehaviour
 
     void Update()
     {
-        // Actualiza el llenado de la barra (valor entre 0 y 1)
+        
         lifebar.fillAmount = health / maxHealth;
     }
 
@@ -30,6 +30,11 @@ public class Lifebar : MonoBehaviour
         {
             health = maxHealth;
         }
+    }
+
+    public void ChangeMaxHealth(float newHealth)
+    {
+        maxHealth = newHealth;
     }
 
     

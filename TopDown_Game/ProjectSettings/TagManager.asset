@@ -9,6 +9,7 @@ TagManager:
   - Warrior
   - Environment
   - BlueFireball
+  - ChangeZone
   layers:
   - Default
   - TransparentFX

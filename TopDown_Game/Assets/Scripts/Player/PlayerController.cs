@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private int Health = 5;
     [SerializeField] private float cdShoot = 1f;
-    private int currentHealth= 5;
+    public int currentHealth;
     public GameObject redFireballPrefab;
     public int upgradePoints = 1;
 
@@ -21,16 +21,19 @@ public class PlayerController : MonoBehaviour
     //Uso Awake para que se ejecute antes que el OnEnable
     private void Awake()
     {
+
+        LoadPlayerData();
         
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        currentHealth = Health;
+        
 
     }
 
    private void Start()
     {
+        lifebar.ChangeHealth(currentHealth);
         playerControls = new PlayerControls();
         playerControls.Enable();
     }
@@ -103,6 +106,9 @@ public class PlayerController : MonoBehaviour
         Destroy(gameObject);
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
+        PlayerPrefs.SetInt("PlayerPoints", 0);
+        PlayerPrefs.SetInt("PlayerHealth", Health);
+        PlayerPrefs.Save();
     }
 
     public void Shoot()
@@ -136,7 +142,9 @@ public class PlayerController : MonoBehaviour
     {
         Health += amount;
         currentHealth = Health;
+        lifebar.ChangeMaxHealth(Health);
         lifebar.ChangeHealth(currentHealth);
+        
     }
 
     public void ApplySlowEffect()
@@ -150,6 +158,16 @@ public class PlayerController : MonoBehaviour
         moveSpeed = originalSpeed * 0.5f;
         yield return new WaitForSeconds(5f);
         moveSpeed = originalSpeed;
+    }
+
+    public void LoadPlayerData()
+    {
+        
+        currentHealth = PlayerPrefs.GetInt("PlayerHealth");
+        lifebar.ChangeHealth(currentHealth);
+        upgradePoints = PlayerPrefs.GetInt("PlayerPoints");
+        
+        
     }
 
 }
