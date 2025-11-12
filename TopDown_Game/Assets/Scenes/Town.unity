@@ -1502,10 +1502,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1327667396}
     m_Modifications:
-    - target: {fileID: 984846956168996561, guid: e6e22c75865721e4c855bf16cc6c0fb7, type: 3}
-      propertyPath: m_Radius
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 1579886574003502966, guid: e6e22c75865721e4c855bf16cc6c0fb7, type: 3}
       propertyPath: m_Name
       value: Warrior
@@ -2016,7 +2012,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4050377264374882820, guid: acea9c14b36a5c94c9583b3394190f0e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1281483953}
   m_SourcePrefab: {fileID: 100100000, guid: acea9c14b36a5c94c9583b3394190f0e, type: 3}
 --- !u!4 &476378028 stripped
 Transform:
@@ -4092,8 +4091,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -9.7828, y: 82}
-  m_SizeDelta: {x: 311.5657, y: 62.6356}
+  m_AnchoredPosition: {x: 9.0374, y: 83.2142}
+  m_SizeDelta: {x: 349.206, y: 60.2072}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1081533711
 MonoBehaviour:
@@ -4115,7 +4114,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xBFQuieres ir al bosque?"
+  m_text: "\xBFQuieres ir a por Buggy?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4178,7 +4177,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -1.2141724, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4941,6 +4940,7 @@ MonoBehaviour:
   - Gracias por ayudar al pueblo
   - Como agradecimiento te puedo curar
   - "Si tienes 400 puntos puedo mejorarte la vida 10 puntos m\xE1s"
+  - Todo esto es culpa de Buggy que ha venido con su ejercito para tomar el pueblo
   dialoguePanel: {fileID: 1814089747}
   dialogueText: {fileID: 1260452933}
   requiredXP: 400
@@ -5063,7 +5063,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Aceptar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5658,6 +5658,27 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6e22c75865721e4c855bf16cc6c0fb7, type: 3}
+--- !u!1 &1281483952 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4050377264374882820, guid: acea9c14b36a5c94c9583b3394190f0e, type: 3}
+  m_PrefabInstance: {fileID: 470859066}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &1281483953
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281483952}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.64000005, y: 0.64000005, z: 0.1}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!4 &1281516678 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7637686608490565010, guid: 29a66fdd926645e43a4b60f578fcb48a, type: 3}
@@ -6492,8 +6513,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -316.5, y: 208.5}
-  m_SizeDelta: {x: 167.7453, y: 12.4286}
+  m_AnchoredPosition: {x: -320.1967, y: 208.64}
+  m_SizeDelta: {x: 228.7413, y: 12.717}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1440003123
 MonoBehaviour:
@@ -6769,7 +6790,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Rechazar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

@@ -5,7 +5,7 @@ using UnityEngine;
 public class WizzardIntelligence : MonoBehaviour
 {
 
-    private int health = 15;
+    private int health = 20;
 
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 10f;

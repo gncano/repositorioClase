@@ -5135,8 +5135,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -316.5, y: 208.5}
-  m_SizeDelta: {x: 167.7453, y: 12.4286}
+  m_AnchoredPosition: {x: -320.1967, y: 208.64}
+  m_SizeDelta: {x: 228.7413, y: 12.717}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &924957391
 GameObject:
@@ -5571,7 +5571,7 @@ MonoBehaviour:
   areaMax: {x: 8.46, y: 4.3}
   blueFireballPrefab: {fileID: 8881873577875285809, guid: 1df76d02d4ef50d47ba0679cb9be2cf7, type: 3}
   fireballCooldown: 2
-  meleeAttackRadius: 2
+  meleeAttackRadius: 3
   playerLayer:
     serializedVersion: 2
     m_Bits: 64

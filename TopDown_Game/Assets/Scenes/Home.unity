@@ -6556,7 +6556,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -6615,8 +6615,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000030517578, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 23.1344, y: -3.3049}
+  m_SizeDelta: {x: 900.6405, y: 43.3902}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &339061352 stripped
 Transform:
@@ -20353,7 +20353,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Rechazar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -21907,7 +21907,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Aceptar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -31291,19 +31291,27 @@ PrefabInstance:
       objectReference: {fileID: 1932031784}
     - target: {fileID: 481363725421699104, guid: 295b636b4b050c140a7ff38eb44eafa9, type: 3}
       propertyPath: dialogueLines.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 481363725421699104, guid: 295b636b4b050c140a7ff38eb44eafa9, type: 3}
       propertyPath: dialogueLines.Array.data[0]
-      value: holita
+      value: 'Hola '
       objectReference: {fileID: 0}
     - target: {fileID: 481363725421699104, guid: 295b636b4b050c140a7ff38eb44eafa9, type: 3}
       propertyPath: dialogueLines.Array.data[1]
-      value: a que pitingo mola un huevo
+      value: Vengo del pueblo de al lado
       objectReference: {fileID: 0}
     - target: {fileID: 481363725421699104, guid: 295b636b4b050c140a7ff38eb44eafa9, type: 3}
       propertyPath: dialogueLines.Array.data[2]
-      value: bueno a lo que iba, han matado a mi familia un saludo
+      value: He cruzado el bosque para pedirte ayuda
+      objectReference: {fileID: 0}
+    - target: {fileID: 481363725421699104, guid: 295b636b4b050c140a7ff38eb44eafa9, type: 3}
+      propertyPath: dialogueLines.Array.data[3]
+      value: Han asaltado el pueblo, por favor intenta salvar a los que queden
+      objectReference: {fileID: 0}
+    - target: {fileID: 481363725421699104, guid: 295b636b4b050c140a7ff38eb44eafa9, type: 3}
+      propertyPath: dialogueLines.Array.data[4]
+      value: Por cierto ojo con Buggy
       objectReference: {fileID: 0}
     - target: {fileID: 2846699018971650773, guid: 295b636b4b050c140a7ff38eb44eafa9, type: 3}
       propertyPath: m_LocalPosition.x
