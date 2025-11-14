@@ -74,7 +74,7 @@ namespace SalasEmpresa
 
         private void CargarHoras()
         {
-            string salaSeleccionada = cmbSala.SelectedItem.ToString(); //error preguntar a Rosa
+            string salaSeleccionada = cmbSala.SelectedItem.ToString(); 
 
             cmbHora.Items.Clear();
 
@@ -273,6 +273,7 @@ namespace SalasEmpresa
             cmbHora.Items.Clear();
             cmbBebida.SelectedIndex = -1;
             cmbBocadito.SelectedIndex = -1;
+            
             
         }
 
