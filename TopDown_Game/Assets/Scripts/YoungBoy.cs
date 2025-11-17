@@ -94,27 +94,11 @@ public class YoungBoy : MonoBehaviour
         {
             player.upgradePoints -= requiredXP;
             player.IncreaseMaxHealth(healthIncreaseAmount);
-            StartCoroutine(ShowMessage("Jugador mejorado: vida aumentada!"));
             
-        }
-        else
-        {
-            StartCoroutine(ShowMessage("No tienes suficientes puntos para mejorar."));
             
         }
         
     }
-
-
-    private IEnumerator ShowMessage(string message, float duration = 2f)
-    {
-        dialogueText.text = message;
-        dialoguePanel.SetActive(true); // asegurarse que está activo
-        yield return new WaitForSeconds(duration);
-        dialoguePanel.SetActive(false);
-    }
-
-
     private void EndDialogue()
     {
         dialogueActive = false;

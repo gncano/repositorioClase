@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class WizzardIntelligence : MonoBehaviour
@@ -31,7 +32,7 @@ public class WizzardIntelligence : MonoBehaviour
     private Animator animator;
 
     
-    
+
 
     private void Awake()
     {
@@ -71,8 +72,6 @@ public class WizzardIntelligence : MonoBehaviour
             Random.Range(areaMin.x, areaMax.x),
             Random.Range(areaMin.y, areaMax.y)
         );
-
-        //animator.SetTrigger("Run");
     }
 
     private IEnumerator AttackRoutine()
@@ -128,8 +127,6 @@ public class WizzardIntelligence : MonoBehaviour
         transform.position = teleportPosition;
 
         StartCoroutine(WaitAndAttackCoroutine(.1f));
-        
-
     }
 
     private IEnumerator WaitAndAttackCoroutine(float waitTime)
@@ -189,10 +186,18 @@ public class WizzardIntelligence : MonoBehaviour
         if (collision.gameObject.tag == "Fireball")
         {
             RedFireball fireball = collision.gameObject.GetComponent<RedFireball>();
+
+            GameObject player=GameObject.FindGameObjectWithTag("Player");
+            PlayerController playerController = player.GetComponent<PlayerController>();
+
             health -= 1;
             if (health <= 0)
             {
+                PlayerPrefs.SetInt("PlayerPoints", 0);
+                PlayerPrefs.SetInt("PlayerHealth", playerController.Health);
+                PlayerPrefs.Save();
                 Destroy(gameObject);
+                SceneManager.LoadScene("EndGame");
             }
             fireball.destroyFireball();
 

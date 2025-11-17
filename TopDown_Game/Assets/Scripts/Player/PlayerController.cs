@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 1f;
-    [SerializeField] private int Health = 5;
+    [SerializeField] public int Health = 5;
     [SerializeField] private float cdShoot = 1f;
     public int currentHealth;
     public GameObject redFireballPrefab;
@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private SpriteRenderer spriteRenderer;
 
+    [SerializeField] private AudioClip fireballSound;
+    private AudioSource audioSource;
+
     //Uso Awake para que se ejecute antes que el OnEnable
     private void Awake()
     {
@@ -27,7 +30,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        
+        audioSource = GetComponent<AudioSource>();
 
     }
 
@@ -122,6 +125,7 @@ public class PlayerController : MonoBehaviour
             Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
             Vector3 direction = (mousePos - playerScreenPoint).normalized;
             projectile.GetComponent<RedFireball>().setDirection(direction);
+            audioSource.PlayOneShot(fireballSound);
 
         }
 
@@ -162,11 +166,9 @@ public class PlayerController : MonoBehaviour
 
     public void LoadPlayerData()
     {
-        
         currentHealth = PlayerPrefs.GetInt("PlayerHealth");
         lifebar.ChangeHealth(currentHealth);
         upgradePoints = PlayerPrefs.GetInt("PlayerPoints");
-        
         
     }
 
