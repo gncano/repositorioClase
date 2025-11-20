@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Empleado activo="true">
+    <Empleados id="1">
+        <edad>24</edad>
+        <nombre>Gonzalo</nombre>
+        <genero>Hombre</genero>
+        <rol>Developer</rol>
+    </Empleados>
+</Empleado>
