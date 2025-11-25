@@ -31,10 +31,15 @@ public class PracticaDOM {
 
         File file = new File("Empleados.xml");
 
+        //cambia un nodo
         modificarXml(file);
+        //busca a los de menos de 25 y los muestra por pantalla
         buscar(file);
+        //crea un xml introduciendo los nodos por codigo
         File copia = nuevoDocumento();
+        //copia un nodo en otro archivo
         copiarNodo(file, copia);
+        //elimina un nodo y un atributo
         eliminarNodoyAtributo(copia);
     }
 

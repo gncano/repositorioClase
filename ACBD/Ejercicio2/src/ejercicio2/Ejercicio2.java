@@ -4,6 +4,7 @@ import java.io.File;
 
 public class Ejercicio2 {
 
+    //metodos de la libreria File sencillos para directorios
     public static void main(String[] args) {
 
         File directorioActual = new File(".");

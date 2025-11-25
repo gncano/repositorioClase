@@ -1,0 +1,11 @@
+Ejercicios 1, 2, 3 y 3bis funciones sencillas de File
+
+Ejercicios 4, 5, 6 y 6bis leer y escribir en ficheros con FileWritter, FileReader, BufferedWritter y BufferedReader. (Buffer mejor para bucles)
+
+Ejercicios 7 y 7bis archivos Binarios
+
+PracticaSax parsea fichero XML a objeto en java
+
+Practicas DOM y XPATH ejercicios con XML
+
+Json y Gson para hacer diferentes acciones con archivos Json (en Gson cambiar dependencias del pom)

@@ -8,6 +8,7 @@ import java.io.File;
  */
 public class Ejercicio1 {
 
+    //metodos de la libreria File sencillos para archivos
     public static void main(String[] args) {
         File fichero = new File("alumno.xml");
 

@@ -1,13 +1,1 @@
-[ {
-  "nombre" : "Usuario 1",
-  "edad" : 25,
-  "email" : "usuario1@gmail.com"
-}, {
-  "nombre" : "Usuario 2",
-  "edad" : 30,
-  "email" : "usuario2@gmail.com"
-}, {
-  "nombre" : "Usuario 3",
-  "edad" : 28,
-  "email" : "usuario3@gmail.com"
-} ]
+[{"nombre":"Usuario 1","edad":25,"email":"usuario1@gmail.com"},{"nombre":"Usuario 2","edad":30,"email":"usuario2@gmail.com"},{"nombre":"Usuario 3","edad":28,"email":"usuario3@gmail.com"}]

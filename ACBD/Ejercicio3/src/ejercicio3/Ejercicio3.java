@@ -15,6 +15,8 @@ public class Ejercicio3 {
     /**
      * @param args the command line arguments
      */
+    
+    //eliminar, crear y modificar archivos
     public static void main(String[] args) {
         File nuevoDir = new File("NUEVODIR");
 
@@ -31,8 +33,10 @@ public class Ejercicio3 {
         if (f1.exists()) {
             System.out.println("f1 ya exitente");
         } else {
-            f1.mkdir();
+            try{
+            f1.createNewFile();
             System.out.println("f1 creado");
+            }catch(Exception ex){}
         }
 
         if (f2.exists()) {
@@ -42,7 +46,7 @@ public class Ejercicio3 {
             System.out.println("f2 creado");
         }
 
-        File nuevoNombre = new File(nuevoDir, "FICHERO1NUEVO");
+        File nuevoNombre = new File(nuevoDir, "FICHERO1NUEVO.txt");
         f1.renameTo(nuevoNombre);
 
         f2.delete();

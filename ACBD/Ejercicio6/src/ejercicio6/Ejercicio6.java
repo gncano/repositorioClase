@@ -26,7 +26,7 @@ public class Ejercicio6 {
 
     }
 
-    //Lee el fichero java de este ejercicio l?nea por l?nea y mu?stralo por pantalla.
+    //Lee el fichero java de este ejercicio linea por linea y lo muestra por pantalla.
     private static void leerYmostrar(File file) {
         try {
             BufferedReader in = new BufferedReader(new FileReader(file));
@@ -41,6 +41,7 @@ public class Ejercicio6 {
         }
     }
 
+    //escribe en el fichero
     private static void escribir(File file) {
         try {
             BufferedWriter out = new BufferedWriter(new FileWriter(file));

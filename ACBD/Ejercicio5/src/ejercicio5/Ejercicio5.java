@@ -13,6 +13,8 @@ public class Ejercicio5 {
     /**
      * @param args the command line arguments
      */
+    
+    //escribir dentro de un fichero
     public static void main(String[] args) {
 
         File fichero = new File("FICHTEXTO.txt");

@@ -33,6 +33,7 @@ public class Ejercicio6bis {
         System.out.println("\n----------------------------------------------------------");
     }
 
+    //lee el fichero por lineas y vuelve al mark
     private static void leerFchero(File fichero) {
         try (BufferedReader br = new BufferedReader(new FileReader(fichero))) {
 
@@ -62,6 +63,7 @@ public class Ejercicio6bis {
         }
     }
 
+    //escribe en el fichero
     private static void escribirfichero(File fichero) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(fichero))) {
             // añade texto al buffer, es parecido al write

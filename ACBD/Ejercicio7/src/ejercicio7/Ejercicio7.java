@@ -14,6 +14,8 @@ public class Ejercicio7 {
     /**
      * @param args the command line arguments
      */
+    
+    //Ejercicios con archivos binarios
     public static void main(String[] args) {
         File fichero = new File("numeros.bin");
 

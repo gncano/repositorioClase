@@ -25,7 +25,7 @@ public class Ejercicio7bis {
             System.out.println("Fichero 'datos.bin' creado con 5 numeros enteros.\n");
 
             // Leer el tercer número sin recorrer todo el fichero
-            long posicionTercerNumero = (8); // tercera posición, 8 byte.
+            long posicionTercerNumero = 8; // tercera posición, 8 byte.
             raf.seek(posicionTercerNumero); // mueve el puntero al tercer número.
             int numeroLeido = raf.readInt();
             System.out.println("El numero leido es: " + numeroLeido);
