@@ -1,0 +1,3 @@
+Descripcion: Sopa a base de pan, huevo, pimentón y ajo
+Calorias: 105
+Precio: 6.85
