@@ -107,3 +107,5 @@ InitTestScene*.unity*
 !*.csproj
 !*.vbproj
 /ACBD/ConectorBD/nbproject/private/
+/ACBD/Prueba/nbproject/private/
+/ACBD/Prueba/build/

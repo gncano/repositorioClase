@@ -1,0 +1,3 @@
+Empleado: Pablo – Rol: Java Developer
+Empleado: Laura – Rol: CEO
+Empleado: Tomás – Rol: Product Manager
