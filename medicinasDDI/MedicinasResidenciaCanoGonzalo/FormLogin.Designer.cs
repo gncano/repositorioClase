@@ -32,61 +32,79 @@
             label1 = new Label();
             txtUsuario = new TextBox();
             txtClave = new TextBox();
-            btnIniciarSesion = new Button();
-            btnSalir = new Button();
+            btnIniciarSesion = new FontAwesome.Sharp.IconButton();
+            btnSalir = new FontAwesome.Sharp.IconButton();
             SuspendLayout();
             // 
             // lblUsuario
             // 
             lblUsuario.AutoSize = true;
-            lblUsuario.Location = new Point(204, 110);
+            lblUsuario.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblUsuario.Location = new Point(227, 125);
             lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(47, 15);
+            lblUsuario.Size = new Size(69, 21);
             lblUsuario.TabIndex = 0;
             lblUsuario.Text = "Usuario";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(204, 191);
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(227, 206);
             label1.Name = "label1";
-            label1.Size = new Size(36, 15);
+            label1.Size = new Size(52, 21);
             label1.TabIndex = 1;
             label1.Text = "Clave";
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(359, 107);
+            txtUsuario.Location = new Point(382, 122);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(200, 23);
             txtUsuario.TabIndex = 2;
             // 
             // txtClave
             // 
-            txtClave.Location = new Point(359, 183);
+            txtClave.Location = new Point(382, 198);
             txtClave.Name = "txtClave";
             txtClave.Size = new Size(200, 23);
             txtClave.TabIndex = 3;
             // 
             // btnIniciarSesion
             // 
-            btnIniciarSesion.Location = new Point(191, 320);
+            btnIniciarSesion.BackColor = Color.CornflowerBlue;
+            btnIniciarSesion.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnIniciarSesion.IconChar = FontAwesome.Sharp.IconChar.DoorOpen;
+            btnIniciarSesion.IconColor = Color.White;
+            btnIniciarSesion.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnIniciarSesion.IconSize = 30;
+            btnIniciarSesion.ImageAlign = ContentAlignment.MiddleLeft;
+            btnIniciarSesion.Location = new Point(218, 312);
             btnIniciarSesion.Name = "btnIniciarSesion";
-            btnIniciarSesion.Size = new Size(124, 23);
-            btnIniciarSesion.TabIndex = 4;
-            btnIniciarSesion.Text = "INICIAR SESION";
-            btnIniciarSesion.UseVisualStyleBackColor = true;
-            btnIniciarSesion.Click += btnIniciarSesion_Click_1;
+            btnIniciarSesion.Size = new Size(130, 39);
+            btnIniciarSesion.TabIndex = 6;
+            btnIniciarSesion.Text = "Iniciar Sesion";
+            btnIniciarSesion.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnIniciarSesion.UseVisualStyleBackColor = false;
+            btnIniciarSesion.Click += btnIniciarSesion_Click;
             // 
             // btnSalir
             // 
-            btnSalir.Location = new Point(421, 320);
+            btnSalir.BackColor = Color.Salmon;
+            btnSalir.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSalir.IconChar = FontAwesome.Sharp.IconChar.DoorClosed;
+            btnSalir.IconColor = Color.White;
+            btnSalir.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnSalir.IconSize = 30;
+            btnSalir.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSalir.Location = new Point(458, 312);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(120, 23);
-            btnSalir.TabIndex = 5;
-            btnSalir.Text = "SALIR";
-            btnSalir.UseVisualStyleBackColor = true;
-            btnSalir.Click += btnSalir_Click;
+            btnSalir.Size = new Size(101, 39);
+            btnSalir.TabIndex = 7;
+            btnSalir.Text = "Salir";
+            btnSalir.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnSalir.UseVisualStyleBackColor = false;
+            btnSalir.Click += btnSalir_Click_1;
             // 
             // FormLogin
             // 
@@ -111,7 +129,7 @@
         private Label label1;
         private TextBox txtUsuario;
         private TextBox txtClave;
-        private Button btnIniciarSesion;
-        private Button btnSalir;
+        private FontAwesome.Sharp.IconButton btnIniciarSesion;
+        private FontAwesome.Sharp.IconButton btnSalir;
     }
 }

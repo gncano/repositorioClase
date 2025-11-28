@@ -14,35 +14,37 @@
             _idUsuario = idUsuario;
             _idRol = idRol;
             _nombre = nombre;
-
-            lblBienvenido.Text = $"Bienvenido, {_nombre}";
-
-
-            if (_idRol != 1)
-            {
-                btnResidentes.Enabled = false;
-                btnPrescripciones.Enabled = false;
-            }
         }
 
-        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        private void btnResidentes_Click_1(object sender, EventArgs e)
         {
+            FormResidentes frm = new FormResidentes(_idUsuario, _idRol);
+            frm.Owner = this;
+            frm.Show();
+            this.Hide();
+        }
+
+        private void btnPrescripciones_Click_1(object sender, EventArgs e)
+        {
+            FormPrescripciones frm = new FormPrescripciones(_idUsuario, _idRol);
+            frm.Owner = this;
+            frm.Show();
+            this.Hide();
+        }
+
+
+
+        private void FormMenuPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCerrarSesion_Click_1(object sender, EventArgs e)
+        {
+
             this.Hide();
             FormLogin login = new FormLogin();
             login.Show();
-        }
-
-        private void btnResidentes_Click(object sender, EventArgs e)
-        {
-            FormResidentes frm = new FormResidentes(_idUsuario, _idRol);
-            frm.ShowDialog();
-            this.Hide();
-        }
-
-        private void btnPrescripciones_Click(object sender, EventArgs e)
-        {
-            // frm = new FormPrescripciones(_idUsuario, _idRol);
-            //frm.ShowDialog();
         }
     }
 }

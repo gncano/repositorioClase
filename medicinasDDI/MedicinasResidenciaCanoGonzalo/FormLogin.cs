@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,19 +19,15 @@ namespace MedicinasResidenciaCanoGonzalo
             InitializeComponent();
         }
 
-        private void FormLogin_Load(object sender, EventArgs e)
-        {
 
-        }
 
-      
 
-        private void btnSalir_Click(object sender, EventArgs e)
+        private void btnSalir_Click_1(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void btnIniciarSesion_Click_1(object sender, EventArgs e)
+        private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
             string alias = txtUsuario.Text.Trim();
             string clave = txtClave.Text.Trim();
@@ -44,7 +40,7 @@ namespace MedicinasResidenciaCanoGonzalo
 
             try
             {
-              
+
                 string cnn = ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString;
 
                 using (SqlConnection con = new SqlConnection(cnn))
