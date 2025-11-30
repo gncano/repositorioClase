@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMenuPrincipal));
             panel1 = new Panel();
             iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             btnResidentes = new FontAwesome.Sharp.IconButton();
@@ -61,7 +62,7 @@
             // 
             // btnResidentes
             // 
-            btnResidentes.BackColor = Color.MistyRose;
+            btnResidentes.BackColor = Color.MediumSeaGreen;
             btnResidentes.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnResidentes.IconChar = FontAwesome.Sharp.IconChar.User;
             btnResidentes.IconColor = Color.Black;
@@ -77,7 +78,7 @@
             // 
             // btnPrescripciones
             // 
-            btnPrescripciones.BackColor = Color.MistyRose;
+            btnPrescripciones.BackColor = Color.MediumSeaGreen;
             btnPrescripciones.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnPrescripciones.IconChar = FontAwesome.Sharp.IconChar.File;
             btnPrescripciones.IconColor = Color.Black;
@@ -116,6 +117,7 @@
             Controls.Add(btnPrescripciones);
             Controls.Add(btnResidentes);
             Controls.Add(panel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormMenuPrincipal";
             Text = "FormMenuPrincipal";
             Load += FormMenuPrincipal_Load;

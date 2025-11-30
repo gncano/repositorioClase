@@ -28,14 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormResidentes));
             panel1 = new Panel();
-            btnAlta = new Button();
-            btnBuscar = new Button();
+            btnAlta = new FontAwesome.Sharp.IconButton();
+            btnBuscar = new FontAwesome.Sharp.IconButton();
             txtBuscarNombre = new TextBox();
             label1 = new Label();
             dgvResidentes = new DataGridView();
-            btnBaja = new Button();
-            btnModificar = new Button();
             pnlModificar = new Panel();
             btnAcceptar = new Button();
             txtHabitacion = new TextBox();
@@ -45,14 +44,17 @@
             label3 = new Label();
             label2 = new Label();
             pnlAlta = new Panel();
-            btnAltaAceptar = new Button();
+            btnCancelar = new FontAwesome.Sharp.IconButton();
+            btnAltaAceptar = new FontAwesome.Sharp.IconButton();
             txtAltaHabitacion = new TextBox();
             txtAltaApellido = new TextBox();
             txtAltaNombre = new TextBox();
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
-            btnSalir = new Button();
+            btnBaja = new FontAwesome.Sharp.IconButton();
+            btnModificar = new FontAwesome.Sharp.IconButton();
+            btnSalir = new FontAwesome.Sharp.IconButton();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvResidentes).BeginInit();
             pnlModificar.SuspendLayout();
@@ -72,23 +74,37 @@
             // 
             // btnAlta
             // 
+            btnAlta.BackColor = Color.MediumSeaGreen;
+            btnAlta.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAlta.IconChar = FontAwesome.Sharp.IconChar.Add;
+            btnAlta.IconColor = Color.Black;
+            btnAlta.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnAlta.IconSize = 20;
             btnAlta.Location = new Point(518, 58);
             btnAlta.Name = "btnAlta";
-            btnAlta.Size = new Size(75, 23);
-            btnAlta.TabIndex = 3;
+            btnAlta.Size = new Size(118, 31);
+            btnAlta.TabIndex = 10;
             btnAlta.Text = "Dar de Alta";
-            btnAlta.UseVisualStyleBackColor = true;
-            btnAlta.Click += btnAlta_Click;
+            btnAlta.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnAlta.UseVisualStyleBackColor = false;
+            btnAlta.Click += btnAlta_Click_1;
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(518, 14);
+            btnBuscar.BackColor = Color.MediumSeaGreen;
+            btnBuscar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnBuscar.IconChar = FontAwesome.Sharp.IconChar.LongArrowRight;
+            btnBuscar.IconColor = Color.Black;
+            btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnBuscar.IconSize = 20;
+            btnBuscar.Location = new Point(518, 11);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(75, 23);
-            btnBuscar.TabIndex = 2;
+            btnBuscar.Size = new Size(118, 31);
+            btnBuscar.TabIndex = 9;
             btnBuscar.Text = "Buscar";
-            btnBuscar.UseVisualStyleBackColor = true;
-            btnBuscar.Click += btnBuscar_Click;
+            btnBuscar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnBuscar.UseVisualStyleBackColor = false;
+            btnBuscar.Click += btnBuscar_Click_1;
             // 
             // txtBuscarNombre
             // 
@@ -120,28 +136,6 @@
             dgvResidentes.Size = new Size(730, 220);
             dgvResidentes.TabIndex = 1;
             dgvResidentes.CellClick += dgvResidentes_CellClick;
-            // 
-            // btnBaja
-            // 
-            btnBaja.Enabled = false;
-            btnBaja.Location = new Point(134, 393);
-            btnBaja.Name = "btnBaja";
-            btnBaja.Size = new Size(75, 23);
-            btnBaja.TabIndex = 4;
-            btnBaja.Text = "Dar de Baja";
-            btnBaja.UseVisualStyleBackColor = true;
-            btnBaja.Click += btnBaja_Click;
-            // 
-            // btnModificar
-            // 
-            btnModificar.Enabled = false;
-            btnModificar.Location = new Point(384, 393);
-            btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(75, 23);
-            btnModificar.TabIndex = 5;
-            btnModificar.Text = "Modificar";
-            btnModificar.UseVisualStyleBackColor = true;
-            btnModificar.Click += btnModificar_Click;
             // 
             // pnlModificar
             // 
@@ -218,6 +212,8 @@
             // 
             // pnlAlta
             // 
+            pnlAlta.BackColor = Color.Khaki;
+            pnlAlta.Controls.Add(btnCancelar);
             pnlAlta.Controls.Add(btnAltaAceptar);
             pnlAlta.Controls.Add(txtAltaHabitacion);
             pnlAlta.Controls.Add(txtAltaApellido);
@@ -231,15 +227,39 @@
             pnlAlta.TabIndex = 7;
             pnlAlta.Visible = false;
             // 
+            // btnCancelar
+            // 
+            btnCancelar.BackColor = Color.MediumSeaGreen;
+            btnCancelar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCancelar.IconChar = FontAwesome.Sharp.IconChar.DoorClosed;
+            btnCancelar.IconColor = Color.Black;
+            btnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnCancelar.IconSize = 20;
+            btnCancelar.Location = new Point(592, 108);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(118, 31);
+            btnCancelar.TabIndex = 12;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnCancelar.UseVisualStyleBackColor = false;
+            btnCancelar.Click += btnCancelar_Click;
+            // 
             // btnAltaAceptar
             // 
-            btnAltaAceptar.Location = new Point(621, 66);
+            btnAltaAceptar.BackColor = Color.MediumSeaGreen;
+            btnAltaAceptar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAltaAceptar.IconChar = FontAwesome.Sharp.IconChar.ThumbsUp;
+            btnAltaAceptar.IconColor = Color.Black;
+            btnAltaAceptar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnAltaAceptar.IconSize = 20;
+            btnAltaAceptar.Location = new Point(592, 61);
             btnAltaAceptar.Name = "btnAltaAceptar";
-            btnAltaAceptar.Size = new Size(75, 23);
-            btnAltaAceptar.TabIndex = 6;
-            btnAltaAceptar.Text = "ACEPTAR";
-            btnAltaAceptar.UseVisualStyleBackColor = true;
-            btnAltaAceptar.Click += btnAltaAceptar_Click;
+            btnAltaAceptar.Size = new Size(118, 31);
+            btnAltaAceptar.TabIndex = 11;
+            btnAltaAceptar.Text = "Aceptar";
+            btnAltaAceptar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnAltaAceptar.UseVisualStyleBackColor = false;
+            btnAltaAceptar.Click += btnAltaAceptar_Click_1;
             // 
             // txtAltaHabitacion
             // 
@@ -289,15 +309,56 @@
             label7.TabIndex = 0;
             label7.Text = "Nombre";
             // 
+            // btnBaja
+            // 
+            btnBaja.BackColor = Color.MediumSeaGreen;
+            btnBaja.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnBaja.IconChar = FontAwesome.Sharp.IconChar.DeleteLeft;
+            btnBaja.IconColor = Color.Black;
+            btnBaja.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnBaja.IconSize = 20;
+            btnBaja.Location = new Point(121, 388);
+            btnBaja.Name = "btnBaja";
+            btnBaja.Size = new Size(118, 31);
+            btnBaja.TabIndex = 12;
+            btnBaja.Text = "Dar de Baja";
+            btnBaja.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnBaja.UseVisualStyleBackColor = false;
+            btnBaja.Click += btnBaja_Click_1;
+            // 
+            // btnModificar
+            // 
+            btnModificar.BackColor = Color.MediumSeaGreen;
+            btnModificar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnModificar.IconChar = FontAwesome.Sharp.IconChar.Modx;
+            btnModificar.IconColor = Color.Black;
+            btnModificar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnModificar.IconSize = 20;
+            btnModificar.Location = new Point(345, 388);
+            btnModificar.Name = "btnModificar";
+            btnModificar.Size = new Size(118, 31);
+            btnModificar.TabIndex = 13;
+            btnModificar.Text = "Modificar";
+            btnModificar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnModificar.UseVisualStyleBackColor = false;
+            btnModificar.Click += btnModificar_Click_1;
+            // 
             // btnSalir
             // 
-            btnSalir.Location = new Point(601, 393);
+            btnSalir.BackColor = Color.MediumSeaGreen;
+            btnSalir.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSalir.IconChar = FontAwesome.Sharp.IconChar.DoorClosed;
+            btnSalir.IconColor = Color.Black;
+            btnSalir.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnSalir.IconSize = 20;
+            btnSalir.Location = new Point(567, 388);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(75, 23);
-            btnSalir.TabIndex = 8;
-            btnSalir.Text = "SALIR";
-            btnSalir.UseVisualStyleBackColor = true;
-            btnSalir.Click += btnSalir_Click;
+            btnSalir.Size = new Size(118, 31);
+            btnSalir.TabIndex = 14;
+            btnSalir.Text = "Salir";
+            btnSalir.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnSalir.UseVisualStyleBackColor = false;
+            btnSalir.Click += btnSalir_Click_1;
             // 
             // FormResidentes
             // 
@@ -305,12 +366,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(btnSalir);
+            Controls.Add(btnModificar);
+            Controls.Add(btnBaja);
             Controls.Add(pnlAlta);
             Controls.Add(pnlModificar);
-            Controls.Add(btnModificar);
             Controls.Add(dgvResidentes);
-            Controls.Add(btnBaja);
             Controls.Add(panel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormResidentes";
             Text = "FormResidentes";
             panel1.ResumeLayout(false);
@@ -326,13 +388,9 @@
         #endregion
 
         private Panel panel1;
-        private Button btnAlta;
-        private Button btnBuscar;
         private TextBox txtBuscarNombre;
         private Label label1;
         private DataGridView dgvResidentes;
-        private Button btnBaja;
-        private Button btnModificar;
         private Panel pnlModificar;
         private Label label2;
         private TextBox txtHabitacion;
@@ -342,13 +400,18 @@
         private Label label3;
         private Button btnAcceptar;
         private Panel pnlAlta;
-        private Button btnAltaAceptar;
         private TextBox txtAltaHabitacion;
         private TextBox txtAltaApellido;
         private TextBox txtAltaNombre;
         private Label label5;
         private Label label6;
         private Label label7;
-        private Button btnSalir;
+        private FontAwesome.Sharp.IconButton btnBuscar;
+        private FontAwesome.Sharp.IconButton btnAlta;
+        private FontAwesome.Sharp.IconButton btnAltaAceptar;
+        private FontAwesome.Sharp.IconButton btnBaja;
+        private FontAwesome.Sharp.IconButton btnModificar;
+        private FontAwesome.Sharp.IconButton btnSalir;
+        private FontAwesome.Sharp.IconButton btnCancelar;
     }
 }

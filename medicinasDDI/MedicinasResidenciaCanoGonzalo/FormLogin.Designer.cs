@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             lblUsuario = new Label();
             label1 = new Label();
             txtUsuario = new TextBox();
@@ -117,6 +118,7 @@
             Controls.Add(txtUsuario);
             Controls.Add(label1);
             Controls.Add(lblUsuario);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormLogin";
             Text = "FormLogin";
             ResumeLayout(false);

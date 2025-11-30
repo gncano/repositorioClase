@@ -24,32 +24,6 @@ namespace MedicinasResidenciaCanoGonzalo
             _idRol = idRol;
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
-                {
-                    con.Open();
-                    SqlCommand cmd = new SqlCommand("sp_BuscarResidente", con);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Nombre", txtBuscarNombre.Text.Trim());
-
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-
-                    btnModificar.Enabled = false;
-                    btnBaja.Enabled = false;
-
-                    dgvResidentes.DataSource = dt;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al buscar residentes: " + ex.Message);
-            }
-        }
 
         private void dgvResidentes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -59,44 +33,6 @@ namespace MedicinasResidenciaCanoGonzalo
                 btnModificar.Enabled = true;
                 btnBaja.Enabled = true;
             }
-        }
-
-        private void btnBaja_Click(object sender, EventArgs e)
-        {
-            if (dgvResidentes.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Selecciona un residente primero.");
-                return;
-            }
-
-
-            int idResidente = Convert.ToInt32(
-                dgvResidentes.SelectedRows[0].Cells["IdResidente"].Value
-            );
-
-
-            if (_idRol != 1)
-            {
-                MessageBox.Show("Solo un usuario supervisor puede dar de baja.");
-                return;
-            }
-
-
-            DialogResult confirm = MessageBox.Show(
-                "¿Seguro que quieres dar de baja al residente?",
-                "Confirmar baja",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
-            );
-
-            if (confirm != DialogResult.Yes)
-                return;
-
-
-            DarDeBajaResidente(idResidente, _idUsuario);
-
-
-            btnBuscar.PerformClick();
         }
 
         private void DarDeBajaResidente(int idResidente, int idUsuario)
@@ -116,28 +52,6 @@ namespace MedicinasResidenciaCanoGonzalo
             }
 
             MessageBox.Show("Residente dado de baja correctamente.");
-        }
-
-        private void btnModificar_Click(object sender, EventArgs e)
-        {
-            if (dgvResidentes.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Selecciona un residente primero.");
-                return;
-            }
-
-            if (_idRol != 1)
-            {
-                MessageBox.Show("Solo un supervisor puede modificar residentes.");
-                return;
-            }
-
-            txtNombre.Text = dgvResidentes.SelectedRows[0].Cells[1].Value.ToString();
-            txtApellido.Text = dgvResidentes.SelectedRows[0].Cells[2].Value.ToString();
-            txtHabitacion.Text = dgvResidentes.SelectedRows[0].Cells[3].Value.ToString();
-
-            pnlModificar.Visible = true;
-
         }
 
         private void btnAcceptar_Click(object sender, EventArgs e)
@@ -175,13 +89,41 @@ namespace MedicinasResidenciaCanoGonzalo
             MessageBox.Show("Residente modificado correctamente.");
         }
 
-        private void btnAlta_Click(object sender, EventArgs e)
+
+
+        private void btnBuscar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("sp_BuscarResidente", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Nombre", txtBuscarNombre.Text.Trim());
+
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    btnModificar.Enabled = false;
+                    btnBaja.Enabled = false;
+
+                    dgvResidentes.DataSource = dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar residentes: " + ex.Message);
+            }
+        }
+
+        private void btnAlta_Click_1(object sender, EventArgs e)
         {
             pnlAlta.Visible = true;
         }
 
-
-        private void btnAltaAceptar_Click(object sender, EventArgs e)
+        private void btnAltaAceptar_Click_1(object sender, EventArgs e)
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand("sp_AltaResidente", con))
@@ -205,10 +147,74 @@ namespace MedicinasResidenciaCanoGonzalo
             btnBuscar.PerformClick();
         }
 
-        private void btnSalir_Click(object sender, EventArgs e)
+        private void btnBaja_Click_1(object sender, EventArgs e)
+        {
+            if (dgvResidentes.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Selecciona un residente primero.");
+                return;
+            }
+
+
+            int idResidente = Convert.ToInt32(
+                dgvResidentes.SelectedRows[0].Cells["IdResidente"].Value
+            );
+
+
+            if (_idRol != 1)
+            {
+                MessageBox.Show("Solo un usuario supervisor puede dar de baja.");
+                return;
+            }
+
+
+            DialogResult confirm = MessageBox.Show(
+                "¿Seguro que quieres dar de baja al residente?",
+                "Confirmar baja",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (confirm != DialogResult.Yes)
+                return;
+
+
+            DarDeBajaResidente(idResidente, _idUsuario);
+
+
+            btnBuscar.PerformClick();
+        }
+
+        private void btnModificar_Click_1(object sender, EventArgs e)
+        {
+            if (dgvResidentes.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Selecciona un residente primero.");
+                return;
+            }
+
+            if (_idRol != 1)
+            {
+                MessageBox.Show("Solo un supervisor puede modificar residentes.");
+                return;
+            }
+
+            txtNombre.Text = dgvResidentes.SelectedRows[0].Cells[1].Value.ToString();
+            txtApellido.Text = dgvResidentes.SelectedRows[0].Cells[2].Value.ToString();
+            txtHabitacion.Text = dgvResidentes.SelectedRows[0].Cells[3].Value.ToString();
+
+            pnlModificar.Visible = true;
+        }
+
+        private void btnSalir_Click_1(object sender, EventArgs e)
         {
             this.Owner.Show();
             this.Close();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            pnlAlta.Visible = false;
         }
     }
 }
