@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package ejer1_gonzalocanosebastian;
 
 import java.io.File;
@@ -35,8 +31,7 @@ public class Ejer1_GonzaloCanoSebastian {
         File file = crearFichero();
         masDe500cal(file);
         menosDe6(file);
-        
-        //modificar(file);
+        modificar(file);
 
     }
 
@@ -207,7 +202,7 @@ public class Ejer1_GonzaloCanoSebastian {
             DocumentBuilder builder = builderFactory.newDocumentBuilder();
             Document xmlDocument = builder.parse(file);
             XPath xPath = XPathFactory.newInstance().newXPath();
-            Document doc = builder.newDocument();
+            
 
             NodeList nodeList = (NodeList) (xPath.evaluate("/menu/comida", xmlDocument, XPathConstants.NODESET));
 
@@ -216,14 +211,14 @@ public class Ejer1_GonzaloCanoSebastian {
                 
                 
                 
-                Element servicio = doc.createElement("servicio");
-                servicio.appendChild(doc.createTextNode("En local, en terraza y para llevar"));
+                Element servicio = xmlDocument.createElement("servicio");
+                servicio.appendChild(xmlDocument.createTextNode("En local, en terraza y para llevar"));
                 e.appendChild(servicio);
             }
 
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
-            DOMSource source = new DOMSource(doc);
+            DOMSource source = new DOMSource(xmlDocument);
 
             StreamResult result = new StreamResult(file);
 
