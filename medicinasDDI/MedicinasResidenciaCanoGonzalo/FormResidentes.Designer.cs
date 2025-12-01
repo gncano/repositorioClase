@@ -139,6 +139,7 @@
             // 
             // pnlModificar
             // 
+            pnlModificar.BackColor = Color.Khaki;
             pnlModificar.Controls.Add(btnAcceptar);
             pnlModificar.Controls.Add(txtHabitacion);
             pnlModificar.Controls.Add(txtApellido);

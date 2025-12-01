@@ -171,7 +171,7 @@
             pnlModificacion.Controls.Add(txtModificacionLaboratorio);
             pnlModificacion.Controls.Add(label13);
             pnlModificacion.Controls.Add(label14);
-            pnlModificacion.Location = new Point(18, 3);
+            pnlModificacion.Location = new Point(3, 3);
             pnlModificacion.Name = "pnlModificacion";
             pnlModificacion.Size = new Size(736, 237);
             pnlModificacion.TabIndex = 18;
@@ -327,7 +327,7 @@
             pnlAddPrescripcion.Controls.Add(label4);
             pnlAddPrescripcion.Controls.Add(txtIdResidente);
             pnlAddPrescripcion.Controls.Add(label3);
-            pnlAddPrescripcion.Location = new Point(15, 117);
+            pnlAddPrescripcion.Location = new Point(12, 117);
             pnlAddPrescripcion.Name = "pnlAddPrescripcion";
             pnlAddPrescripcion.Size = new Size(777, 236);
             pnlAddPrescripcion.TabIndex = 12;

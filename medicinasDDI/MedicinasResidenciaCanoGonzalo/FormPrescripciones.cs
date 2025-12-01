@@ -256,7 +256,7 @@ namespace MedicinasResidenciaCanoGonzalo
 
         private void btnModificar_Click_1(object sender, EventArgs e)
         {
-            if (_idRol != 1) // 1 = Supervisor
+            if (_idRol != 1) 
             {
                 MessageBox.Show("No tienes permisos para modificar prescripciones.");
                 return;
