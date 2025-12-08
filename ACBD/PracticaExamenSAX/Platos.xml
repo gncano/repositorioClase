@@ -1,0 +1,22 @@
+<Restaurante>
+    <Plato id="P1">
+        <nombre>Paella</nombre>
+        <precio>12.50</precio>
+        <tipo>Principal</tipo>
+        <ingredientes>Arroz, Mariscos, Verduras</ingredientes>
+    </Plato>
+
+    <Plato id="P2">
+        <nombre>Gazpacho</nombre>
+        <precio>5.00</precio>
+        <tipo>Entrante</tipo>
+        <ingredientes>Tomate, Pepino, Pimiento</ingredientes>
+    </Plato>
+
+    <Plato id="P3">
+        <nombre>Crema Catalana</nombre>
+        <precio>6.00</precio>
+        <tipo>Postre</tipo>
+        <ingredientes>Leche, Azúcar, Canela</ingredientes>
+    </Plato>
+</Restaurante>
