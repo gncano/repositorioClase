@@ -26,6 +26,7 @@ public class PracticaXPATH {
             Node nodo = (Node) (xPath.evaluate("/Empleados/Empleado", xmlDocument, XPathConstants.NODE));
             NodeList nodeList = (NodeList) (xPath.evaluate("/Empleados/Empleado", xmlDocument, XPathConstants.NODESET));
 
+            
             //empleado con id 4
             for (int i = 0; i < nodeList.getLength(); i++) {
                 if (nodeList.item(i).getAttributes().item(0).getTextContent().equalsIgnoreCase("4")) {

@@ -4,7 +4,7 @@
     <Empleado id="1">
                 		
         
-        <edad>20</edad>
+        <edad>22</edad>
                 		
         
         <nombre>Pablo</nombre>
@@ -16,7 +16,7 @@
         <rol>Java Developer</rol>
                 	
     
-    </Empleado>
+    <Prueba>PRUEBA</Prueba></Empleado>
         	
     
     <Empleado id="2">
@@ -34,7 +34,7 @@
         <rol>CEO</rol>
                 	
     
-    </Empleado>
+    <Prueba>PRUEBA</Prueba></Empleado>
         	
     
     <Empleado id="3">
@@ -52,7 +52,7 @@
         <rol>Product Manager</rol>
                 	
     
-    </Empleado>
+    <Prueba>PRUEBA</Prueba></Empleado>
         	
     
     <Empleado id="4">
@@ -70,7 +70,7 @@
         <rol>Project Manager</rol>
                 	
     
-    </Empleado>
+    <Prueba/><Prueba>PRUEBA</Prueba></Empleado>
         
 
 </Empleados>

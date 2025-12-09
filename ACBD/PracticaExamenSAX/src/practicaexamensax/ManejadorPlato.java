@@ -25,7 +25,7 @@ public class ManejadorPlato extends DefaultHandler{
        valorActual.setLength(0);
         
         if (qName.equalsIgnoreCase("Plato")) { 
-             plato= new Plato();
+            plato= new Plato();
             String id = attributes.getValue("id");
             plato.setId(id);
         }

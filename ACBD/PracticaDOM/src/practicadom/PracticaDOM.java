@@ -33,6 +33,7 @@ public class PracticaDOM {
 
         //cambia un nodo
         modificarXml(file);
+        modificarXml2(file);
         //busca a los de menos de 25 y los muestra por pantalla
         buscar(file);
         //crea un xml introduciendo los nodos por codigo
@@ -56,7 +57,7 @@ public class PracticaDOM {
             for (int i = 0; i < nodeList.getLength(); i++) {
 
                 if (nodeList.item(i).getChildNodes().item(3).getTextContent().compareToIgnoreCase("Pablo") == 0) {
-                    nodeList.item(i).getChildNodes().item(1).setTextContent("20");
+                    nodeList.item(i).getChildNodes().item(1).setTextContent("22");
                 }
 
             }
@@ -209,6 +210,38 @@ public class PracticaDOM {
             transformer.transform(new DOMSource(doc), new StreamResult(copia));
 
             System.out.println("Nodo eliminado y atributo añadido correctamente.");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void modificarXml2(File file) {
+        
+         try {
+
+            DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = builderFactory.newDocumentBuilder();
+            Document doc = builder.parse(file);
+            XPath xPath = XPathFactory.newInstance().newXPath();
+
+            NodeList nodeList = (NodeList) (xPath.evaluate("/Empleados/Empleado", doc, XPathConstants.NODESET));
+            
+            
+
+            for (int i = 0; i < nodeList.getLength(); i++) {
+
+                Element nodo = doc.createElement("Prueba");
+                nodo.setTextContent("PRUEBA");
+                    nodeList.item(i).appendChild(nodo);
+                
+
+            }
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(new File("Empleados.xml"));
+            transformer.transform(source, result);
 
         } catch (Exception e) {
             e.printStackTrace();
