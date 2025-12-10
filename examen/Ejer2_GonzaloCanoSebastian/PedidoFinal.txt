@@ -1,0 +1,8 @@
+Id Pedido: 121 
+Producto: Queso curado 
+Precio: 500.0
+--------------------------------------
+Id Pedido: 122 
+Producto: Queso semicurado 
+Precio: 220.67
+--------------------------------------
