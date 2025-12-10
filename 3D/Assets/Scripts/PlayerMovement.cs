@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(movement);
 
+
         Jump();
         Run();
     }
