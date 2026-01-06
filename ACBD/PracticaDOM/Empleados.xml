@@ -16,7 +16,7 @@
         <rol>Java Developer</rol>
                 	
     
-    <Prueba>PRUEBA</Prueba></Empleado>
+    <Prueba>PRUEBA</Prueba><Prueba>PRUEBA</Prueba></Empleado>
         	
     
     <Empleado id="2">
@@ -34,7 +34,7 @@
         <rol>CEO</rol>
                 	
     
-    <Prueba>PRUEBA</Prueba></Empleado>
+    <Prueba>PRUEBA</Prueba><Prueba>PRUEBA</Prueba></Empleado>
         	
     
     <Empleado id="3">
@@ -52,7 +52,7 @@
         <rol>Product Manager</rol>
                 	
     
-    <Prueba>PRUEBA</Prueba></Empleado>
+    <Prueba>PRUEBA</Prueba><Prueba>PRUEBA</Prueba></Empleado>
         	
     
     <Empleado id="4">
@@ -70,7 +70,7 @@
         <rol>Project Manager</rol>
                 	
     
-    <Prueba/><Prueba>PRUEBA</Prueba></Empleado>
+    <Prueba/><Prueba>PRUEBA</Prueba><Prueba>PRUEBA</Prueba></Empleado>
         
 
 </Empleados>

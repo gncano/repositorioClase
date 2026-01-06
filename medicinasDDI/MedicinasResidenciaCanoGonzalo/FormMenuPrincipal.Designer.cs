@@ -34,6 +34,7 @@
             btnResidentes = new FontAwesome.Sharp.IconButton();
             btnPrescripciones = new FontAwesome.Sharp.IconButton();
             btnCerrarSesion = new FontAwesome.Sharp.IconButton();
+            btnInformes = new FontAwesome.Sharp.IconButton();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
             SuspendLayout();
@@ -83,7 +84,7 @@
             btnPrescripciones.IconChar = FontAwesome.Sharp.IconChar.File;
             btnPrescripciones.IconColor = Color.Black;
             btnPrescripciones.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnPrescripciones.Location = new Point(486, 199);
+            btnPrescripciones.Location = new Point(486, 166);
             btnPrescripciones.Name = "btnPrescripciones";
             btnPrescripciones.Size = new Size(216, 54);
             btnPrescripciones.TabIndex = 6;
@@ -108,11 +109,28 @@
             btnCerrarSesion.UseVisualStyleBackColor = false;
             btnCerrarSesion.Click += btnCerrarSesion_Click_1;
             // 
+            // btnInformes
+            // 
+            btnInformes.BackColor = Color.MediumSeaGreen;
+            btnInformes.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnInformes.IconChar = FontAwesome.Sharp.IconChar.FileSignature;
+            btnInformes.IconColor = Color.Black;
+            btnInformes.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnInformes.Location = new Point(486, 253);
+            btnInformes.Name = "btnInformes";
+            btnInformes.Size = new Size(216, 54);
+            btnInformes.TabIndex = 8;
+            btnInformes.Text = "Formulario de Informes";
+            btnInformes.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnInformes.UseVisualStyleBackColor = false;
+            btnInformes.Click += btnInformes_Click;
+            // 
             // FormMenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnInformes);
             Controls.Add(btnCerrarSesion);
             Controls.Add(btnPrescripciones);
             Controls.Add(btnResidentes);
@@ -133,5 +151,6 @@
         private FontAwesome.Sharp.IconButton btnResidentes;
         private FontAwesome.Sharp.IconButton btnPrescripciones;
         private FontAwesome.Sharp.IconButton btnCerrarSesion;
+        private FontAwesome.Sharp.IconButton btnInformes;
     }
 }

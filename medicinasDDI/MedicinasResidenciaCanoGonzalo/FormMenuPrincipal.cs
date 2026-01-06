@@ -46,5 +46,13 @@
             FormLogin login = new FormLogin();
             login.Show();
         }
+
+        private void btnInformes_Click(object sender, EventArgs e)
+        {
+            FormInformes frm = new FormInformes(_idUsuario, _idRol);
+            frm.Owner = this;
+            frm.Show();
+            this.Hide();
+        }
     }
 }
