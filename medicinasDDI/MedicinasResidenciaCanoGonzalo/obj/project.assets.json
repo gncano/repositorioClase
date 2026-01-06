@@ -7066,11 +7066,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\documentos\\clase\\repositorioClase\\medicinasDDI\\MedicinasResidenciaCanoGonzalo\\MedicinasResidenciaCanoGonzalo.csproj",
+      "projectUniqueName": "C:\\documentos\\Nueva carpeta\\repositorioClase\\medicinasDDI\\MedicinasResidenciaCanoGonzalo\\MedicinasResidenciaCanoGonzalo.csproj",
       "projectName": "MedicinasResidenciaCanoGonzalo",
-      "projectPath": "C:\\documentos\\clase\\repositorioClase\\medicinasDDI\\MedicinasResidenciaCanoGonzalo\\MedicinasResidenciaCanoGonzalo.csproj",
+      "projectPath": "C:\\documentos\\Nueva carpeta\\repositorioClase\\medicinasDDI\\MedicinasResidenciaCanoGonzalo\\MedicinasResidenciaCanoGonzalo.csproj",
       "packagesPath": "C:\\Users\\gcano\\.nuget\\packages\\",
-      "outputPath": "C:\\documentos\\clase\\repositorioClase\\medicinasDDI\\MedicinasResidenciaCanoGonzalo\\obj\\",
+      "outputPath": "C:\\documentos\\Nueva carpeta\\repositorioClase\\medicinasDDI\\MedicinasResidenciaCanoGonzalo\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\gcano\\AppData\\Roaming\\NuGet\\NuGet.Config",

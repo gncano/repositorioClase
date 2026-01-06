@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "aVnzGM01tsc=",
+  "dgSpecHash": "NvecZXII9Ik=",
   "success": true,
-  "projectFilePath": "C:\\documentos\\clase\\repositorioClase\\medicinasDDI\\MedicinasResidenciaCanoGonzalo\\MedicinasResidenciaCanoGonzalo.csproj",
+  "projectFilePath": "C:\\documentos\\Nueva carpeta\\repositorioClase\\medicinasDDI\\MedicinasResidenciaCanoGonzalo\\MedicinasResidenciaCanoGonzalo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gcano\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\gcano\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",

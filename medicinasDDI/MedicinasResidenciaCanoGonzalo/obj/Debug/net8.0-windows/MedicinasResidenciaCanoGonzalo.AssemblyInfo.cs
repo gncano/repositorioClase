@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MedicinasResidenciaCanoGonzalo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+70c2f021c4e2d9c7824707e41c3b5a77fb3d1888")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ebff5b9b2fb5e2738e4e09276187574ba17db57a")]
 [assembly: System.Reflection.AssemblyProductAttribute("MedicinasResidenciaCanoGonzalo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MedicinasResidenciaCanoGonzalo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
