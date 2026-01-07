@@ -70,6 +70,7 @@
             btnModificar = new FontAwesome.Sharp.IconButton();
             btnSalir = new FontAwesome.Sharp.IconButton();
             btnBorrar = new FontAwesome.Sharp.IconButton();
+            btnExcel = new FontAwesome.Sharp.IconButton();
             panel1.SuspendLayout();
             pnlModificacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPrescripciones).BeginInit();
@@ -508,7 +509,7 @@
             btnSalir.IconColor = Color.Black;
             btnSalir.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnSalir.IconSize = 20;
-            btnSalir.Location = new Point(565, 384);
+            btnSalir.Location = new Point(505, 384);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(118, 31);
             btnSalir.TabIndex = 25;
@@ -525,7 +526,7 @@
             btnBorrar.IconColor = Color.Black;
             btnBorrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnBorrar.IconSize = 20;
-            btnBorrar.Location = new Point(131, 384);
+            btnBorrar.Location = new Point(142, 384);
             btnBorrar.Name = "btnBorrar";
             btnBorrar.Size = new Size(162, 31);
             btnBorrar.TabIndex = 26;
@@ -534,11 +535,29 @@
             btnBorrar.UseVisualStyleBackColor = false;
             btnBorrar.Click += btnBorrar_Click_1;
             // 
+            // btnExcel
+            // 
+            btnExcel.BackColor = Color.MediumSeaGreen;
+            btnExcel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnExcel.IconChar = FontAwesome.Sharp.IconChar.Table;
+            btnExcel.IconColor = Color.Black;
+            btnExcel.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnExcel.IconSize = 20;
+            btnExcel.Location = new Point(15, 384);
+            btnExcel.Name = "btnExcel";
+            btnExcel.Size = new Size(94, 31);
+            btnExcel.TabIndex = 28;
+            btnExcel.Text = "Excel";
+            btnExcel.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnExcel.UseVisualStyleBackColor = false;
+            btnExcel.Click += btnExcel_Click;
+            // 
             // FormPrescripciones
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnExcel);
             Controls.Add(btnBorrar);
             Controls.Add(btnSalir);
             Controls.Add(btnModificar);
@@ -603,5 +622,6 @@
         private FontAwesome.Sharp.IconButton btnModificar;
         private FontAwesome.Sharp.IconButton btnSalir;
         private FontAwesome.Sharp.IconButton btnBorrar;
+        private FontAwesome.Sharp.IconButton btnExcel;
     }
 }

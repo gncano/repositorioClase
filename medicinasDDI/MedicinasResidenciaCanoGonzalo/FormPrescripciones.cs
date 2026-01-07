@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using ClosedXML.Excel;
+using Microsoft.Data.SqlClient;
 using System.Configuration;
 using System.Data;
 
@@ -256,7 +257,7 @@ namespace MedicinasResidenciaCanoGonzalo
 
         private void btnModificar_Click_1(object sender, EventArgs e)
         {
-            if (_idRol != 1) 
+            if (_idRol != 1)
             {
                 MessageBox.Show("No tienes permisos para modificar prescripciones.");
                 return;
@@ -338,6 +339,50 @@ namespace MedicinasResidenciaCanoGonzalo
 
             // Actualizar el DataGridView
             btnBuscar.PerformClick();
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            if (dgvPrescripciones.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay datos para exportar.", "Aviso");
+                return;
+            }
+
+            using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "Excel Workbook|*.xlsx" })
+            {
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        var wb = new XLWorkbook();
+                        var ws = wb.Worksheets.Add("Informe");
+
+                        for (int i = 0; i < dgvPrescripciones.Columns.Count; i++)
+                            ws.Cell(1, i + 1).Value = dgvPrescripciones.Columns[i].HeaderText;
+
+                        for (int i = 0; i < dgvPrescripciones.Rows.Count; i++)
+                        {
+                            for (int j = 0; j < dgvPrescripciones.Columns.Count; j++)
+                            {
+                                ws.Cell(i + 2, j + 1).Value = dgvPrescripciones.Rows[i].Cells[j].Value?.ToString() ?? "";
+                            }
+                        }
+
+                        ws.Cell(1, dgvPrescripciones.Columns.Count + 2).Value = "Fecha generación:";
+                        ws.Cell(2, dgvPrescripciones.Columns.Count + 2).Value = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
+                        ws.Cell(4, dgvPrescripciones.Columns.Count + 2).Value = "Número de líneas:";
+                        ws.Cell(5, dgvPrescripciones.Columns.Count + 2).Value = dgvPrescripciones.Rows.Count;
+
+                        wb.SaveAs(sfd.FileName);
+                        MessageBox.Show("Exportado correctamente a Excel.", "Éxito");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al exportar a Excel: " + ex.Message, "Error");
+                    }
+                }
+            }
         }
     }
 }

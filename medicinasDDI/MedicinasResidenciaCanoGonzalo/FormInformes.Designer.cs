@@ -211,11 +211,11 @@
             // 
             btnExcel.BackColor = Color.MediumSeaGreen;
             btnExcel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnExcel.IconChar = FontAwesome.Sharp.IconChar.DeleteLeft;
+            btnExcel.IconChar = FontAwesome.Sharp.IconChar.Table;
             btnExcel.IconColor = Color.Black;
             btnExcel.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnExcel.IconSize = 20;
-            btnExcel.Location = new Point(355, 395);
+            btnExcel.Location = new Point(392, 395);
             btnExcel.Name = "btnExcel";
             btnExcel.Size = new Size(94, 31);
             btnExcel.TabIndex = 27;
@@ -228,11 +228,11 @@
             // 
             btnPdf.BackColor = Color.MediumSeaGreen;
             btnPdf.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnPdf.IconChar = FontAwesome.Sharp.IconChar.DeleteLeft;
+            btnPdf.IconChar = FontAwesome.Sharp.IconChar.File;
             btnPdf.IconColor = Color.Black;
             btnPdf.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnPdf.IconSize = 20;
-            btnPdf.Location = new Point(535, 395);
+            btnPdf.Location = new Point(572, 395);
             btnPdf.Name = "btnPdf";
             btnPdf.Size = new Size(94, 31);
             btnPdf.TabIndex = 28;
