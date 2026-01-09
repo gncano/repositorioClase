@@ -90,7 +90,7 @@ namespace MedicinasResidenciaCanoGonzalo
                 case "Habitación": return "r.NumeroHabitacion";
                 case "Medicamento": return "p.NombreMedicamento";
                 case "Fecha de inicio": return "p.FechaAlta";
-                case "Fecha de modificacion": return "p.FechaModificacion";
+                case "Fecha de modificación": return "p.FechaModificacion";
                 case "Estado": return "p.Estado";
                 case "Dosis": return "p.Dosis";
                 default: return null;

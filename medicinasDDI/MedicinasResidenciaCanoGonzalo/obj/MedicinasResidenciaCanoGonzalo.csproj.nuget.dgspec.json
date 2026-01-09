@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\documentos\\Nueva carpeta\\repositorioClase\\medicinasDDI\\MedicinasResidenciaCanoGonzalo\\MedicinasResidenciaCanoGonzalo.csproj": {}
+    "C:\\Users\\dam\\Documents\\repositorioClase\\medicinasDDI\\MedicinasResidenciaCanoGonzalo\\MedicinasResidenciaCanoGonzalo.csproj": {}
   },
   "projects": {
-    "C:\\documentos\\Nueva carpeta\\repositorioClase\\medicinasDDI\\MedicinasResidenciaCanoGonzalo\\MedicinasResidenciaCanoGonzalo.csproj": {
+    "C:\\Users\\dam\\Documents\\repositorioClase\\medicinasDDI\\MedicinasResidenciaCanoGonzalo\\MedicinasResidenciaCanoGonzalo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\documentos\\Nueva carpeta\\repositorioClase\\medicinasDDI\\MedicinasResidenciaCanoGonzalo\\MedicinasResidenciaCanoGonzalo.csproj",
+        "projectUniqueName": "C:\\Users\\dam\\Documents\\repositorioClase\\medicinasDDI\\MedicinasResidenciaCanoGonzalo\\MedicinasResidenciaCanoGonzalo.csproj",
         "projectName": "MedicinasResidenciaCanoGonzalo",
-        "projectPath": "C:\\documentos\\Nueva carpeta\\repositorioClase\\medicinasDDI\\MedicinasResidenciaCanoGonzalo\\MedicinasResidenciaCanoGonzalo.csproj",
-        "packagesPath": "C:\\Users\\gcano\\.nuget\\packages\\",
-        "outputPath": "C:\\documentos\\Nueva carpeta\\repositorioClase\\medicinasDDI\\MedicinasResidenciaCanoGonzalo\\obj\\",
+        "projectPath": "C:\\Users\\dam\\Documents\\repositorioClase\\medicinasDDI\\MedicinasResidenciaCanoGonzalo\\MedicinasResidenciaCanoGonzalo.csproj",
+        "packagesPath": "C:\\Users\\dam\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dam\\Documents\\repositorioClase\\medicinasDDI\\MedicinasResidenciaCanoGonzalo\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\gcano\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dam\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -90,7 +94,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.308/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
