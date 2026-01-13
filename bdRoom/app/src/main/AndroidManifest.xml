@@ -24,7 +24,6 @@
             android:name="com.gcs.bdroommvvm.ui.consulta.Consulta"
             android:exported="false"/>
 
-
         <activity
             android:name="com.gcs.bdroommvvm.ui.login.MainActivity"
             android:exported="true">
