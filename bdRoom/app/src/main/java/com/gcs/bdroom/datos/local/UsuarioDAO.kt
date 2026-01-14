@@ -4,7 +4,6 @@ package com.gcs.bdroommvvm.datos.local
     import androidx.room.Dao
     import androidx.room.Insert
     import androidx.room.Query
-    import androidx.room.Update
     import com.gcs.bdroommvvm.datos.local.entities.Usuario
 
     import kotlinx.coroutines.flow.Flow

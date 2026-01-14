@@ -94,7 +94,6 @@ class AlumnoActivity : AppCompatActivity() {
 
     }
 
-
     private fun grabar() {
         val dni = binding.etDni.text.toString()
         val nombre = binding.etNombre.text.toString()
@@ -102,10 +101,9 @@ class AlumnoActivity : AppCompatActivity() {
 
         val alumno = Alumno(dni, nombre, curso)
 
-        lifecycleScope.launch {
             // 1. Ejecutamos la actualizacion y esperamos el resultado
             alumnosViewModel.updateAlumno(alumno)
-        }
+
     }
 
     private fun eliminar(alumno: Alumno?) {
@@ -167,11 +165,4 @@ class AlumnoActivity : AppCompatActivity() {
     private fun mostrarError(mensaje: String) {
         Snackbar.make(binding.root, mensaje, Snackbar.LENGTH_LONG).show()
     }
-
-
 }
-
-
-
-
-

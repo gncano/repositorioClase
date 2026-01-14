@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.gcs.bdroommvvm.datos.local.UsuarioDao
 import com.gcs.bdroommvvm.datos.local.entities.Usuario
 import com.gcs.bdroommvvm.datos.repository.UserRepository
 import kotlinx.coroutines.Dispatchers
