@@ -24,6 +24,6 @@ public class Proveedor {
     private int telefono;
     private String email;
 
-    @ManyToMany(mappedBy = "proveedores")
+    @ManyToMany(mappedBy = "proveedores", fetch = FetchType.EAGER)
     private Set<Producto> productos = new HashSet<>();
 }
