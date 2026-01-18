@@ -32,7 +32,7 @@ class LoginActivity : AppCompatActivity() {
 
             if (usuario != null) {
                 val intent = Intent(this, ListaVehiculosActivity::class.java)
-                intent.putExtra("perfil", usuario.perfil)
+                intent.putExtra("usuario", usuario)
                 startActivity(intent)
             } else {
                 Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()

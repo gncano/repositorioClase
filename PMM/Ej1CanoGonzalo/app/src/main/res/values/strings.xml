@@ -2,4 +2,5 @@
     <string name="app_name">Ej1CanoGonzalo</string>
     <string name="usuario">Usuario</string>
     <string name="inicio_de_sesion">Inicio de sesion</string>
+    <string name="pantalla_de_vehiculos">Pantalla de vehículos</string>
 </resources>
