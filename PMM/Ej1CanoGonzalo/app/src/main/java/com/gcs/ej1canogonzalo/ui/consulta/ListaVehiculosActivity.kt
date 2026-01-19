@@ -1,5 +1,6 @@
 package com.gcs.ej1canogonzalo.ui.consulta
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -12,6 +13,8 @@ import com.gcs.ej1canogonzalo.data.local.DatosVehiculos
 import com.gcs.ej1canogonzalo.data.local.entidades.Usuario
 
 class ListaVehiculosActivity : AppCompatActivity() {
+    private lateinit var adapter: VehiculoAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,46 +23,40 @@ class ListaVehiculosActivity : AppCompatActivity() {
         val usuario = intent.getSerializableExtra("usuario") as Usuario
         val tvPerfil = findViewById<TextView>(R.id.tvPerfil)
 
-        tvPerfil.text = when (usuario.perfil) {
-            0 -> "Bienvenido " + usuario.login + "\n" +
-                    "tus permisos son de mecánico"
 
-            1 -> "Bienvenido " + usuario.login + "\n" +
-                    "tus permisos son de recepción"
+        tvPerfil.text = when (usuario.perfil) {
+            0 -> "Bienvenido " + usuario.login + "\n" + "tus permisos son de mecánico"
+
+            1 -> "Bienvenido " + usuario.login + "\n" + "tus permisos son de recepción"
 
             else -> "Perfil desconocido"
         }
+        val btnNuevoVehiculo = findViewById<Button>(R.id.btnNuevoVehiculo)
+        btnNuevoVehiculo.visibility = if (usuario.perfil == 1) View.VISIBLE else View.GONE
 
-        val btnReparar = findViewById<Button>(R.id.btnReparar)
-        val btnEntregar = findViewById<Button>(R.id.btnEntregar)
-        var vehiculosFiltrados = DatosVehiculos.vehiculos
+        btnNuevoVehiculo.setOnClickListener {
+            val intent = Intent(this, NuevoVehiculoActivity::class.java)
+            startActivity(intent)
+        }
+
+        var vehiculosFiltrados = DatosVehiculos.vehiculos.toMutableList()
 
         if (usuario.perfil == 0) {
-            btnReparar.visibility = View.VISIBLE
-            btnEntregar.visibility = View.GONE
-            vehiculosFiltrados = DatosVehiculos.vehiculos.filter { it.mecanicoId == usuario.id }
-
-        } else {
-            btnReparar.visibility = View.GONE
-            btnEntregar.visibility = View.VISIBLE
-
+            vehiculosFiltrados =
+                DatosVehiculos.vehiculos.filter { it.mecanicoId == usuario.id }.toMutableList()
         }
 
         val rvVehiculos = findViewById<RecyclerView>(R.id.rvVehiculos)
         rvVehiculos.layoutManager = LinearLayoutManager(this)
-        rvVehiculos.adapter = VehiculoAdapter(vehiculosFiltrados, usuario)
-        //TO DO
 
-        val texto = vehiculosFiltrados.joinToString("\n\n") { v ->
-            "Matrícula: ${v.matricula}\n" +
-                    "Modelo: ${v.modelo}\n" +
-                    "Estado: ${v.estado}"
+        adapter = VehiculoAdapter(
+            vehiculosFiltrados,
+            usuario
+        ) { vehiculo ->
+            DatosVehiculos.vehiculos.remove(vehiculo)
+            vehiculosFiltrados.remove(vehiculo)
+            adapter.notifyDataSetChanged()
         }
-
-        rvVehiculos.text=texto
-        //TO DO
-        println(usuario.id)
-
-
+        rvVehiculos.adapter = adapter
     }
 }
