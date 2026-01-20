@@ -1,46 +1,40 @@
 package com.gcs.ej1canogonzalo.ui.consulta
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.gcs.ej1canogonzalo.R
 import com.gcs.ej1canogonzalo.data.local.entidades.Usuario
 import com.gcs.ej1canogonzalo.data.local.entidades.Vehiculo
+import com.gcs.ej1canogonzalo.databinding.ItemVehiculoBinding
 
 class VehiculoAdapter(
     private val vehiculos: MutableList<Vehiculo>,
     private val usuario: Usuario,
     private val onAccionClick: (Vehiculo) -> Unit
 ) : RecyclerView.Adapter<VehiculoAdapter.VehiculoViewHolder>() {
-    class VehiculoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val tvMatricula: TextView = view.findViewById(R.id.tvMatricula)
-        val tvModelo: TextView = view.findViewById(R.id.tvModelo)
-        val tvEstado: TextView = view.findViewById(R.id.tvEstado)
-        val btnAccion: Button = view.findViewById(R.id.btnAccion)
-    }
+
+    class VehiculoViewHolder(val binding: ItemVehiculoBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VehiculoViewHolder {
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_vehiculo, parent, false)
-        return VehiculoViewHolder(view)
+        val binding = ItemVehiculoBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+        return VehiculoViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: VehiculoViewHolder, position: Int) {
         val vehiculo = vehiculos[position]
-        holder.tvMatricula.text = vehiculo.matricula
-        holder.tvModelo.text = vehiculo.modelo
-        holder.tvEstado.text = vehiculo.estado
 
-        holder.btnAccion.text = if (usuario.perfil == 0) {
-            "Cambiar estado"
+        holder.binding.tvMatricula.text = vehiculo.matricula
+        holder.binding.tvModelo.text = vehiculo.modelo
+        holder.binding.tvEstado.text = vehiculo.estado
 
-        } else "Entregar"
         if (usuario.perfil == 0) {
-            holder.btnAccion.text = "Cambiar estado"
-            holder.btnAccion.setOnLongClickListener {
+            holder.binding.btnAccion.text = "Cambiar estado"
+            holder.binding.btnAccion.setOnLongClickListener {
                 vehiculo.estado = when (vehiculo.estado) {
                     "Pendiente" -> "Reparado"
                     "Reparado" -> "Pendiente"
@@ -49,24 +43,15 @@ class VehiculoAdapter(
                 notifyItemChanged(position)
                 true
             }
-
         } else {
-            holder.btnAccion.text = "Entregar"
-            holder.btnAccion.setOnClickListener {
+            holder.binding.btnAccion.text = "Entregar"
+            holder.binding.btnAccion.setOnClickListener {
                 onAccionClick(vehiculo)
             }
         }
 
-        if (usuario.perfil == 1) {
-            holder.btnAccion.isEnabled = vehiculo.estado == "Reparado"
-        } else {
-            holder.btnAccion.isEnabled = true
-        }
-
-
-
-
-
+        holder.binding.btnAccion.isEnabled =
+            if (usuario.perfil == 1) vehiculo.estado == "Reparado" else true
     }
 
     override fun getItemCount(): Int = vehiculos.size

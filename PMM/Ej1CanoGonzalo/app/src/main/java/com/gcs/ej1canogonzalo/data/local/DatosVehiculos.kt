@@ -24,7 +24,7 @@ object DatosVehiculos {
             modelo = "Volkswagen Golf",
             fechaEntrega = "2024-01-12",
             observaciones = "Cambio de aceite",
-            estado = "Reparando",
+            estado = "Pendiente",
             mecanicoId = 0
         ),
         Vehiculo(
