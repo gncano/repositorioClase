@@ -26,6 +26,7 @@ public class Producto {
     private Integer stockActual;
     private Integer stockMinimo;
 
+
     @ManyToOne
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;

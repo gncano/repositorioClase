@@ -4,16 +4,23 @@
  */
 package com.gestion_inventario.ui;
 
+import com.gestion_inventario.GestionInventarioApplication;
+import com.gestion_inventario.modelo.Categoria;
 import com.gestion_inventario.modelo.Producto;
 import com.gestion_inventario.modelo.Proveedor;
 import com.gestion_inventario.servicios.ProductoServicio;
+import com.gestion_inventario.servicios.CategoriaServicio;
+
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.swing.JComboBox;
+
 import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import org.aspectj.weaver.patterns.ThisOrTargetPointcut;
+import javax.swing.table.TableRowSorter;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
  *
@@ -21,19 +28,22 @@ import org.aspectj.weaver.patterns.ThisOrTargetPointcut;
  */
 public class VentanaStock extends javax.swing.JFrame {
 
-
     private DefaultTableModel modeloTabla;
     private ProductoServicio productoServicio;
+    private CategoriaServicio categoriaServicio;
 
-    private String[] columnas = {"ID", "Nombre", "Categoría", "Stock", "Stock Mínimo", "Proveedor"};
+    private String[] columnas = {"ID", "Nombre", "Descripción", "Precio", "Stock", "Stock Mínimo", "Categoría", "Proveedor"};
 
     /**
      * Creates new form VentanaStock
      */
-    public VentanaStock(ProductoServicio productoServicio) {
+    public VentanaStock(ProductoServicio productoServicio, ApplicationContext contexto) {
         this.productoServicio = productoServicio;
+        categoriaServicio = contexto.getBean(CategoriaServicio.class);
+
         initComponents();
 
+        cargarCategoriasEnCombo();
         setTitle("Gestión de Stock");
         setSize(800, 600);
         setLocationRelativeTo(null);
@@ -63,6 +73,9 @@ public class VentanaStock extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        cmbCategoria = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1500, 460));
@@ -71,51 +84,100 @@ public class VentanaStock extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
+                new Object[][]{
+                        {null, null, null, null},
+                        {null, null, null, null},
+                        {null, null, null, null},
+                        {null, null, null, null}
+                },
+                new String[]{
+                        "Title 1", "Title 2", "Title 3", "Title 4"
+                }
         ));
         jTable1.setName("tablaProductos"); // NOI18N
         jScrollPane1.setViewportView(jTable1);
 
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Filtrar por categoría:");
+
+        jButton1.setText("Filtrar");
+        jButton1.setName("btnFiltrar"); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        cmbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Item 1", "Item 2", "Item 3", "Item 4"}));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 708, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(122, Short.MAX_VALUE))
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(59, 59, 59)
+                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 708, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(86, 86, 86)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jButton1)
+                                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                                .addComponent(jLabel1)
+                                                                .addGap(29, 29, 29)
+                                                                .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addContainerGap(122, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(256, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(143, 143, 143))
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(105, 105, 105)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel1)
+                                        .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                                .addComponent(jButton1)
+                                .addGap(46, 46, 46)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(143, 143, 143))
         );
+
+        jLabel1.getAccessibleContext().setAccessibleName("txtFiltros");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        TableRowSorter<DefaultTableModel> filtro = new TableRowSorter<>(modeloTabla);
+
+        int seleccion = cmbCategoria.getSelectedIndex();
+
+        switch (seleccion){
+            case 1:
+
+
+
+        }
+
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmbCategoria;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
@@ -128,25 +190,34 @@ public class VentanaStock extends javax.swing.JFrame {
         List<Producto> productos = productoServicio.obtenerTodosLosProductos();
         System.out.println("Productos cargados: " + productos.size());
 
-        String[] columnas = {"ID", "Nombre", "Descripción", "Precio", "Stock Actual", "Stock Mínimo", "Categoría"};
-
 
         for (Producto p : productos) {
             System.out.println(p.getNombre());
             String nombresProveedores = p.getProveedores().stream().map(Proveedor::getNombre).collect(Collectors.joining(", "));
+            System.out.println(nombresProveedores);
             modeloTabla.addRow(new Object[]{
-                p.getId(),
-                p.getNombre(),
-                p.getDescripcion(),
-                p.getPrecio(),
-                p.getStockActual(),
-                p.getStockMinimo(),
-                (p.getCategoria() != null ? p.getCategoria().getNombre() : "")
+                    p.getId(),
+                    p.getNombre(),
+                    p.getDescripcion(),
+                    p.getPrecio(),
+                    p.getStockActual(),
+                    p.getStockMinimo(),
+                    p.getCategoria().getNombre(),
+                    nombresProveedores
             });
 
-
         }
-        System.out.println(modeloTabla.getRowCount());
 
+    }
+
+    private void cargarCategoriasEnCombo() {
+        List<Categoria> listaCategorias = categoriaServicio.obtenerTodasLasCategorias();
+
+        cmbCategoria.removeAllItems();
+        cmbCategoria.addItem("Todas");
+
+        for (Categoria categoria : listaCategorias) {
+            cmbCategoria.addItem(categoria.getNombre());
+        }
     }
 }

@@ -5,6 +5,7 @@
 package com.gestion_inventario.ui;
 
 import com.gestion_inventario.servicios.ProductoServicio;
+import org.springframework.context.ApplicationContext;
 
 /**
  *
@@ -13,12 +14,14 @@ import com.gestion_inventario.servicios.ProductoServicio;
 public class VentanaPrincipal extends javax.swing.JFrame {
 
     private ProductoServicio productoServicio;
+    private ApplicationContext contexto;
 
     /**
      * Creates new form VentanaPrincipall
      */
-    public VentanaPrincipal(ProductoServicio productoServicio) {
+    public VentanaPrincipal(ProductoServicio productoServicio, ApplicationContext contexto) {
         this.productoServicio = productoServicio;
+        this.contexto = contexto;
         initComponents();
     }
 
@@ -93,8 +96,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        VentanaStock ventanaStock = new VentanaStock(productoServicio);
+
+        VentanaStock ventanaStock = new VentanaStock(productoServicio, contexto);
         ventanaStock.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed

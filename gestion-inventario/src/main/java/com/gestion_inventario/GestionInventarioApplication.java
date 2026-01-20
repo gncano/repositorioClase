@@ -13,7 +13,7 @@ public class GestionInventarioApplication {
         System.out.println("Headless mode? " + java.awt.GraphicsEnvironment.isHeadless());
         ApplicationContext contexto = SpringApplication.run(GestionInventarioApplication.class, args);
         ProductoServicio productoServicio =contexto.getBean(ProductoServicio.class);
-        VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(productoServicio);
+        VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(productoServicio,contexto);
         ventanaPrincipal.setVisible(true);
 
     }
