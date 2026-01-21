@@ -1,5 +1,6 @@
 package com.gcs.ej2canogonzalo.ui
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -28,6 +29,10 @@ class CategoriaAdapter(
 
         holder.binding.tvCodigo.text = categoria.codigo
         holder.binding.tvDenominacion.text = categoria.denominacion
+
+        holder.binding.root.setOnClickListener {
+            onAccionClick(categoria)
+        }
     }
 
     override fun getItemCount(): Int = categorias.size

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Ej2CanoGonzalo</string>
     <string name="bienvenido">bienvenido</string>
+    <string name="productos">Productos</string>
 </resources>

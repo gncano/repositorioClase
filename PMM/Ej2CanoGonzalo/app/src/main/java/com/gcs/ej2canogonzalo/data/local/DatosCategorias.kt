@@ -6,24 +6,24 @@ object DatosCategorias {
 
     val categorias = listOf(
         Categoria(
-            codigo = "Tops",
-            denominacion = "Parte superior"
+            "Novedades",
+            "Últimas tendencias y lanzamientos"
         ),
         Categoria(
-            codigo = "Conjuntos",
-            denominacion = "Parte superior e inferior"
+            "Casual",
+            "Ropa cómoda para el día a día"
         ),
         Categoria(
-            codigo = "Bottoms",
-            denominacion = "Parte inferior"
+            "Deportivo",
+            "Prendas para entrenamiento y actividad física"
         ),
         Categoria(
-            codigo = "Verano",
-            denominacion = "Ropa de verano"
+            "Formal",
+            "Ropa elegante para eventos y trabajo"
         ),
         Categoria(
-            codigo = "Invierno",
-            denominacion = "Ropa de invierno"
+            "Accesorios",
+            "Complementos para completar tu look"
         )
     )
 }
