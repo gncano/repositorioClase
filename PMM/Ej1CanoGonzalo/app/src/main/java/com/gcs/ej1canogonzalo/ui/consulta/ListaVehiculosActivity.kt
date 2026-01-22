@@ -42,6 +42,7 @@ class ListaVehiculosActivity : AppCompatActivity() {
                 DatosVehiculos.vehiculos.filter { it.mecanicoId == usuario.id }.toMutableList()
         }
 
+
         binding.rvVehiculos.layoutManager = LinearLayoutManager(this)
 
         adapter = VehiculoAdapter(
