@@ -5,6 +5,7 @@
 package com.gestion_inventario.servicios;
 
 import com.gestion_inventario.modelo.Categoria;
+import com.gestion_inventario.modelo.Producto;
 import com.gestion_inventario.repositorios.CategoriaRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,10 @@ public class CategoriaServicio {
     
     public List<Categoria> obtenerTodasLasCategorias() {
      return categoriaRepositorio.findAll();
+    }
+
+    public Categoria obtenerCategoriaPorNombre(String nombreCategoria) {
+        return categoriaRepositorio.findByNombre(nombreCategoria);
     }
     
 }
