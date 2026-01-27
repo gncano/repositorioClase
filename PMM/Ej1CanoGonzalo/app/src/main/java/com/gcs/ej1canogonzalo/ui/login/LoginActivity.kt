@@ -2,30 +2,27 @@ package com.gcs.ej1canogonzalo.ui.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.gcs.ej1canogonzalo.R
+import com.gcs.ej1canogonzalo.databinding.ActivityMainBinding
 import com.gcs.ej1canogonzalo.ui.consulta.ListaVehiculosActivity
 
 class LoginActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         viewModel = LoginViewModel()
 
-        val etLogin = findViewById<EditText>(R.id.etUser)
-        val etPassword = findViewById<EditText>(R.id.etPassword)
-        val btnAceptar = findViewById<Button>(R.id.btnAccept)
-
-        btnAceptar.setOnClickListener {
-            val login = etLogin.text.toString()
-            val password = etPassword.text.toString()
+        binding.btnAccept.setOnClickListener {
+            val login = binding.etUser.text.toString()
+            val password = binding.etPassword.text.toString()
 
             val usuario = viewModel.validarLogin(login, password)
 
@@ -34,7 +31,11 @@ class LoginActivity : AppCompatActivity() {
                 intent.putExtra("usuario", usuario)
                 startActivity(intent)
             } else {
-                Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Usuario o contraseña incorrectos",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }

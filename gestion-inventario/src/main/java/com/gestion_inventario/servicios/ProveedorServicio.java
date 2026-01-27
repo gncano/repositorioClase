@@ -20,4 +20,8 @@ public class ProveedorServicio {
     public List<Proveedor> obtenerTodosLosProveedores() {
         return proveedorRepositorio.findAll();
     }
+
+    public Proveedor obtenerProveedorPorNombre(String nombreProveedor) {
+        return proveedorRepositorio.findByNombre(nombreProveedor);
+    }
 }

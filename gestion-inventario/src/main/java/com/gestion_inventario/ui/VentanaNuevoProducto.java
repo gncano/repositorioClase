@@ -1,25 +1,44 @@
 package com.gestion_inventario.ui;
 
+import com.gestion_inventario.modelo.Categoria;
+import com.gestion_inventario.modelo.Producto;
 import com.gestion_inventario.modelo.Proveedor;
+import com.gestion_inventario.servicios.CategoriaServicio;
+import com.gestion_inventario.servicios.ProductoServicio;
 import com.gestion_inventario.servicios.ProveedorServicio;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.stereotype.Component;
 
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 /**
  *
  * @author dam
  */
+@Component
 public class VentanaNuevoProducto extends javax.swing.JFrame {
 
-    
+
     private DefaultListModel modeloLista;
+    private ProductoServicio productoServicio;
+    private CategoriaServicio categoriaServicio;
     private ProveedorServicio proveedorServicio;
+    private ConfigurableApplicationContext contexto;
+
 
     /**
      * Creates new form VentanaNuevoProducto
      */
-    public VentanaNuevoProducto() {
+    @Autowired
+    public VentanaNuevoProducto(ProductoServicio productoServicio, CategoriaServicio categoriaServicio, ProveedorServicio proveedorServicio, ConfigurableApplicationContext contexto) {
+        this.productoServicio = productoServicio;
+        this.contexto = contexto;
+        this.categoriaServicio = categoriaServicio;
+        this.proveedorServicio = proveedorServicio;
 
         initComponents();
 
@@ -202,14 +221,72 @@ public class VentanaNuevoProducto extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        String nombre = txtNombre.getText();
+        String descripcion = txtDescripcion.getText();
+        double precio = Float.parseFloat(txtPrecio.getText());
+        int stock_actual = Integer.parseInt(txtStockActual.getText());
+        if (stock_actual < 0) {
+            JOptionPane.showMessageDialog(this, "El stock actual no puede ser negativo.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        int stock_minimo = Integer.parseInt(txtStockMinimo.getText());
+        if (stock_actual < 0) {
+            JOptionPane.showMessageDialog(this, "El stock mínimo no puede ser negativo.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        String nombreCategoria = txtCategoria.getText();
+        Categoria categoria = categoriaServicio.obtenerCategoriaPorNombre(nombreCategoria);
+        if (categoria == null) {
+            JOptionPane.showMessageDialog(this, "La categoría no existe.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+
+        List<String> seleccionados = jListProveedores.getSelectedValuesList();
+        List<Proveedor> proveedoresSeleccionados = new ArrayList<>();
+        for (String nombreProveedor : seleccionados) {
+            Proveedor p = proveedorServicio.obtenerProveedorPorNombre(nombreProveedor);
+            if(p != null){
+                proveedoresSeleccionados.add(p);
+            }else{
+                JOptionPane.showMessageDialog(this,"elige un proveedor");
+                return;
+            }
+        }
+        if(nombre.isBlank() || descripcion.isBlank() || txtPrecio.getText().isBlank() || txtStockActual.getText().isBlank() || txtStockMinimo.getText().isBlank()||proveedoresSeleccionados.isEmpty()){
+            JOptionPane.showMessageDialog(this,"Todos los campos deben rellenarse", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        Producto nuevoProducto= new Producto();
+        nuevoProducto.setNombre(nombre);
+        nuevoProducto.setDescripcion(descripcion);
+        nuevoProducto.setPrecio(precio);
+        nuevoProducto.setStockActual(stock_actual);
+        nuevoProducto.setStockMinimo(stock_minimo);
+        nuevoProducto.setCategoria(categoria);
+        nuevoProducto.setProveedores(new HashSet<>(proveedoresSeleccionados));
+
+        productoServicio.guardarProducto(nuevoProducto);
+
+        JOptionPane.showMessageDialog(this, "Producto añadido correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
 
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-
+        txtNombre.setText("");
+        txtDescripcion.setText("");
+        txtPrecio.setText("");
+        txtStockActual.setText("");
+        txtStockMinimo.setText("");
+        txtCategoria.setText("");
+        jListProveedores.setSelectedIndex(-1);
+        VentanaPrincipal ventanaPrincipal = contexto.getBean(VentanaPrincipal.class);
+        ventanaPrincipal.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
 

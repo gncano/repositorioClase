@@ -45,4 +45,8 @@ public class ProductoServicio {
     public Producto guardarProducto(Producto producto) {
         return productoRepositorio.save(producto);
     }
+
+    public void eliminarProducto(Producto producto){
+         productoRepositorio.delete(producto);
+    }
 }

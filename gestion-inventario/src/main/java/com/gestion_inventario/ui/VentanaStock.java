@@ -6,7 +6,9 @@ import com.gestion_inventario.modelo.Proveedor;
 import com.gestion_inventario.servicios.CategoriaServicio;
 import com.gestion_inventario.servicios.ProductoServicio;
 import com.gestion_inventario.ui.renderers.StockRenderer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -18,6 +20,7 @@ import java.util.stream.Collectors;
  *
  * @author dam
  */
+@Component
 public class VentanaStock extends javax.swing.JFrame {
 
     private DefaultTableModel modeloTabla;
@@ -30,10 +33,11 @@ public class VentanaStock extends javax.swing.JFrame {
     /**
      * Creates new form VentanaStock
      */
-    public VentanaStock(ProductoServicio productoServicio, ApplicationContext contexto) {
+    @Autowired
+    public VentanaStock(ProductoServicio productoServicio, CategoriaServicio categoriaServicio, ApplicationContext contexto) {
         this.productoServicio = productoServicio;
         this.contexto = contexto;
-        categoriaServicio = contexto.getBean(CategoriaServicio.class);
+        this.categoriaServicio = categoriaServicio;
 
         initComponents();
 
@@ -60,6 +64,7 @@ public class VentanaStock extends javax.swing.JFrame {
         }
     }
 
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -77,6 +82,8 @@ public class VentanaStock extends javax.swing.JFrame {
         cmbCategoria = new javax.swing.JComboBox<>();
         btnModificar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
+        btnCancelar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1500, 460));
@@ -85,15 +92,15 @@ public class VentanaStock extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
+                new Object[][]{
+                        {null, null, null, null},
+                        {null, null, null, null},
+                        {null, null, null, null},
+                        {null, null, null, null}
+                },
+                new String[]{
+                        "Title 1", "Title 2", "Title 3", "Title 4"
+                }
         ));
         jTable1.setName("tablaProductos"); // NOI18N
         jScrollPane1.setViewportView(jTable1);
@@ -109,7 +116,7 @@ public class VentanaStock extends javax.swing.JFrame {
             }
         });
 
-        cmbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Item 1", "Item 2", "Item 3", "Item 4"}));
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -122,50 +129,71 @@ public class VentanaStock extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Tabla de Productos");
 
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1020, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(jLabel1)
-                        .addGap(29, 29, 29)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(209, 209, 209))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(333, 333, 333)
-                                .addComponent(jLabel9))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(445, 445, 445)
-                                .addComponent(btnModificar)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1020, Short.MAX_VALUE))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(55, 55, 55)
+                                                .addComponent(jLabel1)
+                                                .addGap(29, 29, 29)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jButton1)
+                                                        .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(209, 710, Short.MAX_VALUE))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                                .addGap(333, 333, 333)
+                                                                .addComponent(jLabel9))
+                                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                                .addGap(386, 386, 386)
+                                                                .addComponent(btnModificar)
+                                                                .addGap(84, 84, 84)
+                                                                .addComponent(btnEliminar)))
+                                                .addGap(82, 82, 82)
+                                                .addComponent(btnCancelar)
+                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(jLabel9)
-                .addGap(51, 51, 51)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(66, 66, 66)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(btnModificar)
-                .addContainerGap())
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addComponent(jLabel9)
+                                .addGap(51, 51, 51)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel1)
+                                        .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton1)
+                                .addGap(66, 66, 66)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btnModificar)
+                                        .addComponent(btnCancelar)
+                                        .addComponent(btnEliminar))
+                                .addContainerGap())
         );
 
         jLabel1.getAccessibleContext().setAccessibleName("txtFiltros");
@@ -173,12 +201,12 @@ public class VentanaStock extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -217,11 +245,47 @@ public class VentanaStock extends javax.swing.JFrame {
         }
         Long id = Long.parseLong(jTable1.getValueAt(fila, 0).toString());
 
-        VentanaModificarProducto ventana = new VentanaModificarProducto(id, productoServicio,categoriaServicio, contexto);
-        ventana.setVisible(true);
-        this.setVisible(false);
+        VentanaModificarProducto ventanaModificarProducto = contexto.getBean(VentanaModificarProducto.class);
+        ventanaModificarProducto.setIdProducto(id);
+        ventanaModificarProducto.setVisible(true);
+        this.dispose();
 
     }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        VentanaPrincipal ventanaPrincipal = contexto.getBean(VentanaPrincipal.class);
+        ventanaPrincipal.setVisible(true);
+        this.dispose();
+
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        int fila = jTable1.getSelectedRow();
+
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this, "Selecciona un producto");
+            return;
+        }
+        Long id = Long.parseLong(jTable1.getValueAt(fila, 0).toString());
+        int confirmacion = JOptionPane.showConfirmDialog(this,
+                "¿Está seguro que desea eliminar el producto seleccionado?",
+                "Confirmar eliminación",
+                JOptionPane.YES_NO_OPTION);
+
+        if (confirmacion == JOptionPane.YES_OPTION) {
+            try {
+                productoServicio.eliminarProducto(productoServicio.obtenerProductoPorId(id));
+                JOptionPane.showMessageDialog(this, "Producto eliminado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+                cargarProductos();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Error al eliminar el producto: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+
+
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void CargarAlmacenamiento() {
         modeloTabla.setRowCount(0);
@@ -244,7 +308,7 @@ public class VentanaStock extends javax.swing.JFrame {
         ModificarTabla(productos);
     }
 
-    private void cargarProductos() {
+    public void cargarProductos() {
 
         modeloTabla.setRowCount(0);
 
@@ -261,14 +325,14 @@ public class VentanaStock extends javax.swing.JFrame {
             String nombresProveedores = p.getProveedores().stream().map(Proveedor::getNombre).collect(Collectors.joining(", "));
             System.out.println(nombresProveedores);
             modeloTabla.addRow(new Object[]{
-                p.getId(),
-                p.getNombre(),
-                p.getDescripcion(),
-                p.getPrecio(),
-                p.getStockActual(),
-                p.getStockMinimo(),
-                p.getCategoria().getNombre(),
-                nombresProveedores
+                    p.getId(),
+                    p.getNombre(),
+                    p.getDescripcion(),
+                    p.getPrecio(),
+                    p.getStockActual(),
+                    p.getStockMinimo(),
+                    p.getCategoria().getNombre(),
+                    nombresProveedores
             });
         }
     }
@@ -285,6 +349,8 @@ public class VentanaStock extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JComboBox<String> cmbCategoria;
     private javax.swing.JButton jButton1;

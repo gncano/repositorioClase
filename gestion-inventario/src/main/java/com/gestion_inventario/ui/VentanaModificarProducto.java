@@ -9,6 +9,7 @@ import com.gestion_inventario.modelo.Producto;
 import com.gestion_inventario.servicios.CategoriaServicio;
 import com.gestion_inventario.servicios.ProductoServicio;
 import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 
@@ -16,17 +17,19 @@ import javax.swing.*;
  *
  * @author dam
  */
+@Component
 public class VentanaModificarProducto extends javax.swing.JFrame {
 
     private ProductoServicio productoServicio;
     private CategoriaServicio categoriaServicio;
     private ApplicationContext contexto;
+    private Long idProducto;
 
 
     /**
      * Creates new form VentanaModificarProducto
      */
-    public VentanaModificarProducto(Long idProducto, ProductoServicio productoServicio, CategoriaServicio categoriaServicio, ApplicationContext contexto) {
+    public VentanaModificarProducto(ProductoServicio productoServicio, CategoriaServicio categoriaServicio, ApplicationContext contexto) {
         this.productoServicio = productoServicio;
         this.categoriaServicio = categoriaServicio;
         this.contexto = contexto;
@@ -34,6 +37,11 @@ public class VentanaModificarProducto extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
 
+
+    }
+
+    public void setIdProducto (Long idProducto){
+        this.idProducto=idProducto;
         CargarInformacion(idProducto);
     }
 
@@ -219,8 +227,8 @@ public class VentanaModificarProducto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        VentanaStock ventana = new VentanaStock(productoServicio, contexto);
-        ventana.setVisible(true);
+        VentanaStock ventanaStock = contexto.getBean(VentanaStock.class);
+        ventanaStock.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
@@ -257,8 +265,9 @@ public class VentanaModificarProducto extends javax.swing.JFrame {
 
         productoServicio.guardarProducto(producto);
 
-        VentanaStock ventana = new VentanaStock(productoServicio, contexto);
-        ventana.setVisible(true);
+        VentanaStock ventanaStock = contexto.getBean(VentanaStock.class);
+        ventanaStock.setVisible(true);
+        ventanaStock.cargarProductos();
         this.dispose();
 
     }//GEN-LAST:event_btnAceptarActionPerformed
