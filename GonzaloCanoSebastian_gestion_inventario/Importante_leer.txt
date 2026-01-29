@@ -1,0 +1,19 @@
+Instrucciones para ejecutar el proyecto de gestión de inventario
+
+1. Crear la base de datos
+
+Importa el archivo gestion_inventario.sql en tu servidor MySQL para crear la base de datos y las tablas necesarias.
+
+
+2. Configurar la conexión a la base de datos
+
+En el archivo src/main/resources/application.properties encontrarás algo esto:
+
+spring.datasource.url=jdbc:mysql://localhost:3306/gestion_inventario 
+spring.datasource.username=cano 
+spring.datasource.password=app123
+
+Verifica que los datos de conexión a la base de datos coincidan con tu configuración local:
+
+
+Cambia el username y la password por el usuario y contraseña de tu servidor MySQL o crea uno nuevo con esos datos.
