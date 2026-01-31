@@ -9,7 +9,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 @Entity(
-    tableName = "prestamos",
+    tableName = "prestamo",
     foreignKeys = [ForeignKey(
         entity = Libro::class,
         parentColumns = ["isbn"],
