@@ -1,6 +1,7 @@
 package com.gcs.entregacanogonzalo.datos.local.dao
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.gcs.entregacanogonzalo.datos.local.entidades.Libro
@@ -11,6 +12,9 @@ interface LibroDao {
 
     @Insert
     fun insert(libro: Libro)
+
+    @Delete
+    fun delete(libro: Libro)
 
     @Query("""
         SELECT libro.isbn, libro.titulo, libro.autor,prestamo.personaId_FK, prestamo.fechaPrestamo

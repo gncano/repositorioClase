@@ -6,8 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gcs.entregacanogonzalo.databinding.ItemLibroBinding
 import com.gcs.entregacanogonzalo.datos.local.modelos.LibroConPrestamo
 
-class LibroAdapter(private val onLibroClick: (LibroConPrestamo) -> Unit) :
-    RecyclerView.Adapter<LibroAdapter.LibroViewHolder>() {
+class LibroAdapter(
+    private val onLibroClick: (LibroConPrestamo) -> Unit,
+    private val onDeleteClick: (LibroConPrestamo) -> Unit
+) : RecyclerView.Adapter<LibroAdapter.LibroViewHolder>() {
 
     private var lista: List<LibroConPrestamo> = emptyList()
 
@@ -56,6 +58,10 @@ class LibroAdapter(private val onLibroClick: (LibroConPrestamo) -> Unit) :
 
         holder.binding.root.setOnClickListener {
             onLibroClick(libro)
+        }
+
+        holder.binding.btnEliminar.setOnClickListener {
+            onDeleteClick(libro)
         }
     }
 

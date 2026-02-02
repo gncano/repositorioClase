@@ -6,8 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.gcs.entregacanogonzalo.databinding.NuevoLibroActivityBinding
 import com.gcs.entregacanogonzalo.datos.local.database.AppDatabase
 import com.gcs.entregacanogonzalo.datos.local.entidades.Libro
+import com.gcs.entregacanogonzalo.ui.libro.ListaLibrosActivity
 
-class NuevoLibro : AppCompatActivity() {
+class NuevoLibroActivity : AppCompatActivity() {
 
     private lateinit var binding: NuevoLibroActivityBinding
     private lateinit var db: AppDatabase
@@ -29,6 +30,7 @@ class NuevoLibro : AppCompatActivity() {
             }
 
             db.libroDao().insert(Libro(isbn, titulo, autor))
+
             finish()
         }
         binding.btnCancelar.setOnClickListener { finish() }

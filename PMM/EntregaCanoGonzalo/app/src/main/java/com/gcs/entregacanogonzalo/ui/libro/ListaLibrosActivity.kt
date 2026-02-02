@@ -1,5 +1,6 @@
 package com.gcs.entregacanogonzalo.ui.libro
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -9,8 +10,11 @@ import com.gcs.entregacanogonzalo.databinding.ActivityMainBinding
 import com.gcs.entregacanogonzalo.databinding.DialogoPrestamoBinding
 
 import com.gcs.entregacanogonzalo.datos.local.database.AppDatabase
+import com.gcs.entregacanogonzalo.datos.local.entidades.Libro
 import com.gcs.entregacanogonzalo.datos.local.entidades.Prestamo
 import com.gcs.entregacanogonzalo.datos.local.modelos.LibroConPrestamo
+import com.gcs.entregacanogonzalo.ui.nuevoLibro.NuevoLibroActivity
+import com.gcs.entregacanogonzalo.ui.persona.PersonaActivity
 
 class ListaLibrosActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -21,18 +25,56 @@ class ListaLibrosActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        adapter = LibroAdapter { libro ->
-            if (libro.personaId_FK == null) {
-                pedirDniYFecha(libro)
-            } else {
-                confirmarDevolucion(libro)
-            }
+        binding.btnAltaPersona.setOnClickListener {
+            val intent = Intent(this, PersonaActivity::class.java)
+            startActivity(intent)
         }
+
+        binding.btnAltaLibro.setOnClickListener {
+            val intent = Intent(this, NuevoLibroActivity::class.java)
+            startActivity(intent)
+        }
+
+
+        adapter = LibroAdapter(
+            onLibroClick = { libro ->
+                if (libro.personaId_FK == null) {
+                    pedirDniYFecha(libro)
+                } else {
+                    confirmarDevolucion(libro)
+                }
+            },
+            onDeleteClick = { libro ->
+                if (libro.personaId_FK == null) {
+                    eliminarLibro(libro)
+                }else{
+                    Toast.makeText(this, "Este libro está prestado", Toast.LENGTH_SHORT).show()
+                }
+            }
+        )
+
         binding.rvLibros.layoutManager = LinearLayoutManager(this)
         binding.rvLibros.adapter = adapter
 
         cargarLibros()
+
     }
+
+    fun eliminarLibro(libro: LibroConPrestamo){
+        val item = Libro(
+            isbn = libro.isbn,
+            titulo = libro.titulo,
+            autor = libro.autor
+        )
+        AppDatabase.getDatabase(this).libroDao().delete(item)
+        cargarLibros()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        cargarLibros()
+    }
+
 
     private fun pedirDniYFecha(libro: LibroConPrestamo) {
         val dialogBinding = DialogoPrestamoBinding.inflate(layoutInflater)
@@ -66,7 +108,7 @@ class ListaLibrosActivity : AppCompatActivity() {
                 )
 
                 db.prestamoDao().insert(prestamo)
-                recargarLista()
+                cargarLibros()
             }
             .setNegativeButton("Cancelar", null)
             .show()
@@ -80,16 +122,10 @@ class ListaLibrosActivity : AppCompatActivity() {
             .setMessage("¿Quieres marcar este libro como disponible?")
             .setPositiveButton("Sí") { _, _ ->
                 db.prestamoDao().deletePrestamoDeLibro(libro.isbn)
-                recargarLista()
+                cargarLibros()
             }
             .setNegativeButton("No", null)
             .show()
-    }
-
-    private fun recargarLista() {
-        val db = AppDatabase.getDatabase(this)
-        val lista = db.libroDao().getAllLibros()
-        adapter.submitList(lista)
     }
 
 

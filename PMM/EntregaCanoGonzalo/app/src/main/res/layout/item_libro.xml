@@ -9,8 +9,8 @@
 
     <TextView
         android:id="@+id/tvTitulo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="90dp"
+        android:layout_height="22dp"
         android:text="Titulo"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -21,41 +21,55 @@
 
     <TextView
         android:id="@+id/tvPrestamo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="89dp"
+        android:layout_height="28dp"
         android:text="Prestamo"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitulo" />
+        app:layout_constraintTop_toBottomOf="@id/tvTitulo"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/tvEstado"
-        android:layout_width="145dp"
-        android:layout_height="21dp"
+        android:layout_width="113dp"
+        android:layout_height="20dp"
         android:text="Estado"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.897"
+        app:layout_constraintHorizontal_bias="0.365"
 
         app:layout_constraintStart_toStartOf="@+id/tvTitulo"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.12" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tvFecha"
-        android:layout_width="148dp"
-        android:layout_height="19dp"
+        android:layout_width="111dp"
+        android:layout_height="20dp"
         android:text="Fecha"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.909"
+        app:layout_constraintHorizontal_bias="0.365"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.888" />
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btnEliminar"
+        android:layout_width="103dp"
+        android:layout_height="46dp"
+        android:text="eliminar"
+        android:textAlignment="viewStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
