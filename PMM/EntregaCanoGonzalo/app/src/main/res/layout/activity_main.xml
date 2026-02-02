@@ -31,4 +31,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.619" />
+
+    <Button
+        android:id="@+id/btnAltaPersona"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Alta de Personas"
+        app:layout_constraintTop_toBottomOf="@id/rvLibros"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnAltaLibro"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp" />
+
+    <Button
+        android:id="@+id/btnAltaLibro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Alta de Libros"
+        app:layout_constraintTop_toBottomOf="@id/rvLibros"
+        app:layout_constraintStart_toEndOf="@id/btnAltaPersona"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
