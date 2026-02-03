@@ -1,0 +1,116 @@
+Checklist esencial para que el proyecto funcione (versión examen)
+1. Manifest
+Declarar todas las Activities:
+
+MainActivity
+
+AddLibroActivity
+
+AddPersonaActivity
+
+Cualquier otra que crees
+
+Revisar que tengan:
+
+android:name=".NombreActivity"
+
+2. Room (Base de datos)
+Entidades
+Cada tabla → una @Entity
+
+Primary key correcta:
+
+Libros → ISBN o ID autogenerado
+
+Personas → DNI o ID autogenerado
+
+Préstamos → ID autogenerado
+
+Campos escritos EXACTAMENTE igual que en el DAO
+
+DAO
+Consultas correctas:
+
+@Insert
+
+@Delete
+
+@Update
+
+Query para obtener libros con préstamo usando LEFT JOIN
+
+Revisar que los nombres de columnas coincidan con las entidades
+
+Database
+Clase abstracta con:
+
+kotlin
+@Database(entities = [...], version = 1)
+abstract class AppDatabase : RoomDatabase()
+Singleton en companion object
+
+3. Modelo (data class del JOIN)
+Campos que vienen de Libro
+
+Campos opcionales (?) que vienen del préstamo
+
+Nombres EXACTOS a los del SELECT
+
+4. Adapter
+Recibe la lista del modelo (libro con préstamo)
+
+Tiene callbacks:
+
+onItemClick
+
+onDeleteClick
+
+En el ViewHolder, enlazar bien los IDs del layout
+
+5. Activity principal
+Obtener la BD
+
+Llamar al DAO
+
+Cargar la lista en el Adapter
+
+Implementar:
+
+Registrar préstamo
+
+Registrar devolución
+
+Eliminar libro (solo si personaId == null)
+
+Abrir Activities de añadir libro/persona
+
+6. Activity de añadir libro/persona
+Recoger datos del usuario
+
+Validar campos vacíos
+
+Insertar en la BD
+
+finish() para volver
+
+7. Errores típicos y cómo resolverlos
+❌ La app crashea al abrir una Activity
+✔ No está declarada en el Manifest.
+
+❌ Room dice que falta una columna
+✔ El nombre del campo en la entidad no coincide con el del DAO.
+
+❌ El JOIN devuelve null donde no debería
+✔ Revisar alias y nombres en el SELECT.
+
+❌ El adapter no muestra nada
+✔ No estás pasando la lista correcta.
+✔ No has hecho adapter.notifyDataSetChanged() si actualizas la lista.
+
+❌ No se elimina un libro
+✔ Comprobar:
+
+kotlin
+if (libro.personaId == null) { ... }
+❌ No se guarda un préstamo
+✔ Revisar que insertas en la tabla de préstamos, no en la de libros.

@@ -67,3 +67,18 @@ class LibroAdapter(
 
     override fun getItemCount(): Int = lista.size
 }
+/*
+en el viewholder
+fun bind(libro: LibroConPrestamo) {
+    val color = if (libro.personaId == null) {
+        R.color.verde_libre
+    } else {
+        R.color.rojo_prestado
+    }
+
+    itemView.setBackgroundColor(
+        ContextCompat.getColor(itemView.context, color)
+    )
+}
+
+ */
